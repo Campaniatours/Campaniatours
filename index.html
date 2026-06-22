@@ -1,291 +1,649 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campania Tours | Escursioni, Food Tour e Sentieri nel Cilento</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campania Tours | Escursioni & Esperienze</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <nav>
-      <div class="logo">Campania <span>Tours</span></div>
-      <div class="nav-right">
-        <ul class="nav-links" id="navLinks">
-          <li><a href="#home" data-lang="it" class="active">Home</a>
-              <a href="#home" data-lang="en">Home</a>
-              <a href="#home" data-lang="es">Inicio</a></li>
-          <li><a href="#tour" data-lang="it" class="active">Tour</a>
-              <a href="#tour" data-lang="en">Tours</a>
-              <a href="#tour" data-lang="es">Tours</a></li>
-          <li><a href="#chi-siamo" data-lang="it" class="active">Chi Siamo</a>
-              <a href="#chi-siamo" data-lang="en">About</a>
-              <a href="#chi-siamo" data-lang="es">Quiénes Somos</a></li>
-          <li><a href="#contatti" data-lang="it" class="active">Contatti</a>
-              <a href="#contatti" data-lang="en">Contact</a>
-              <a href="#contatti" data-lang="es">Contacto</a></li>
-        </ul>
-        <div class="lang-switcher">
-          <button class="lang-btn active" data-set-lang="it">IT</button>
-          <button class="lang-btn" data-set-lang="en">EN</button>
-          <button class="lang-btn" data-set-lang="es">ES</button>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-compass"></i>
+                Campania Tours
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#destinations" data-i18n="nav_destinations">Destinazioni</a></li>
+                <li><a href="#tours" data-i18n="nav_tours">Tour</a></li>
+                <li><a href="#about" data-i18n="nav_about">Chi Siamo</a></li>
+                <li><a href="#why-us" data-i18n="nav_why">Perché Noi</a></li>
+                <li><a href="#testimonials" data-i18n="nav_reviews">Recensioni</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contatti</a></li>
+                <li class="lang-selector">
+                    <button class="lang-btn active" onclick="setLanguage('it')">IT</button>
+                    <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+                    <button class="lang-btn" onclick="setLanguage('es')">ES</button>
+                </li>
+            </ul>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        <button class="menu-btn" id="menuBtn">☰</button>
-      </div>
     </nav>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1 data-lang="it" class="active">Scopri l'Anima della <br>Campania</h1>
-      <h1 data-lang="en">Discover the Soul of <br>Campania</h1>
-      <h1 data-lang="es">Descubre el Alma de <br>Campania</h1>
-      
-      <p data-lang="it" class="active">Dai sentieri segreti del Cilento a Pompei, da Capri ai food tour con cooking class. Guide abilitate, esperienze per tutte le tasche.</p>
-      <p data-lang="en">From secret Cilento trails to Pompeii, from Capri to food tours with cooking classes. Licensed guides, experiences for every budget.</p>
-      <p data-lang="es">De los senderos secretos del Cilento a Pompeya, de Capri a los food tours con clases de cocina. Guías autorizados, experiencias para todos.</p>
-      
-      <a href="#tour" class="btn" data-lang="it" class="active">Esplora i Tour</a>
-      <a href="#tour" class="btn" data-lang="en">Explore Tours</a>
-      <a href="#tour" class="btn" data-lang="es">Explorar Tours</a>
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge" data-i18n="hero_badge">Tour Operator Autorizzato</span>
+            <h1 data-i18n="hero_title">Scopri la <span>Campania</span> come non l'hai mai vista</h1>
+            <p data-i18n="hero_subtitle">Escursioni guidate, sentieri nascosti del Cilento, esperienze enogastronomiche autentiche e le meraviglie di Pompei, Capri e Costiera Amalfitana.</p>
+            <div class="hero-buttons">
+                <a href="#tours" class="btn btn-primary" data-i18n="hero_cta1">
+                    <i class="fas fa-map-marked-alt"></i> Esplora i Tour
+                </a>
+                <a href="#contact" class="btn btn-outline" data-i18n="hero_cta2">
+                    <i class="fas fa-phone"></i> Contattaci
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('destinations').scrollIntoView({behavior: 'smooth'})">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+
+    <!-- DESTINATIONS -->
+    <section class="destinations" id="destinations">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="dest_tag">Le Nostre Destinazioni</span>
+                <h2 data-i18n="dest_title">Luoghi Incantevoli da Esplorare</h2>
+                <p data-i18n="dest_desc">Dalle coste mozzafiato ai sentieri segreti del Cilento, ogni destinazione è un'esperienza unica.</p>
+            </div>
+            <div class="dest-grid">
+                <div class="dest-card reveal">
+                    <div class="dest-img">
+                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Costiera Amalfitana">
+                        <span class="dest-badge" data-i18n="badge_popular">Più Richiesto</span>
+                    </div>
+                    <div class="dest-info">
+                        <h3 data-i18n="dest1_title">Costiera Amalfitana</h3>
+                        <p data-i18n="dest1_desc">Un percorso mozzafiato tra Positano, Amalfi e Ravello, con viste panoramiche sul Mar Tirreno.</p>
+                        <div class="dest-meta">
+                            <div class="dest-price">€89 <span data-i18n="per_person">/persona</span></div>
+                            <div class="dest-rating"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card reveal">
+                    <div class="dest-img">
+                        <img src="https://images.unsplash.com/photo-1529260830199-4bcd7c85f3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Capri">
+                        <span class="dest-badge" style="background: var(--primary);" data-i18n="badge_luxury">Luxury</span>
+                    </div>
+                    <div class="dest-info">
+                        <h3 data-i18n="dest2_title">Isola di Capri</h3>
+                        <p data-i18n="dest2_desc">Visita la Grotta Azzurra, i Giardini di Augusto e passeggia tra le vie esclusive dell'isola.</p>
+                        <div class="dest-meta">
+                            <div class="dest-price">€120 <span data-i18n="per_person">/persona</span></div>
+                            <div class="dest-rating"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card reveal">
+                    <div class="dest-img">
+                        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pompei">
+                    </div>
+                    <div class="dest-info">
+                        <h3 data-i18n="dest3_title">Pompei & Vesuvio</h3>
+                        <p data-i18n="dest3_desc">Un viaggio nel tempo tra le rovine antiche e l'ascesa al cratere del vulcano più famoso d'Italia.</p>
+                        <div class="dest-meta">
+                            <div class="dest-price">€75 <span data-i18n="per_person">/persona</span></div>
+                            <div class="dest-rating"><i class="fas fa-star"></i> 4.9</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card reveal">
+                    <div class="dest-img">
+                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cilento">
+                        <span class="dest-badge" style="background: #27ae60;" data-i18n="badge_hidden">Nascosto</span>
+                    </div>
+                    <div class="dest-info">
+                        <h3 data-i18n="dest4_title">Cilento Segreto</h3>
+                        <p data-i18n="dest4_desc">Sentieri nascosti, borghi medievali e spiagge incontaminate lontano dal turismo di massa.</p>
+                        <div class="dest-meta">
+                            <div class="dest-price">€65 <span data-i18n="per_person">/persona</span></div>
+                            <div class="dest-rating"><i class="fas fa-star"></i> 5.0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card reveal">
+                    <div class="dest-img">
+                        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Napoli">
+                    </div>
+                    <div class="dest-info">
+                        <h3 data-i18n="dest5_title">Napoli Storica</h3>
+                        <p data-i18n="dest5_desc">Tour nel centro storico UNESCO, tra chiese barocche, vicoli vivaci e la vera cultura partenopea.</p>
+                        <div class="dest-meta">
+                            <div class="dest-price">€55 <span data-i18n="per_person">/persona</span></div>
+                            <div class="dest-rating"><i class="fas fa-star"></i> 4.7</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dest-card reveal">
+                    <div class="dest-img">
+                        <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Paestum">
+                    </div>
+                    <div class="dest-info">
+                        <h3 data-i18n="dest6_title">Paestum & Bufale</h3>
+                        <p data-i18n="dest6_desc">Templi greci millenari e visita alle aziende bufaline per assaggiare la vera mozzarella di bufala.</p>
+                        <div class="dest-meta">
+                            <div class="dest-price">€70 <span data-i18n data-i18n="per_person">/persona</span></div>
+                            <div class="dest-rating"><i class="fas fa-star"></i> 4.8</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TOURS -->
+    <section class="tours" id="tours">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="tours_tag">I Nostri Tour</span>
+                <h2 data-i18n="tours_title">Esperienze Uniche da Vivere</h2>
+                <p data-i18n="tours_desc">Scegli tra escursioni culturali, avventura nella natura o esperienze enogastronomiche indimenticabili.</p>
+            </div>
+            <div class="tours-grid">
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Food Tour">
+                        <span class="tour-category" data-i18n="cat_food">Enogastronomia</span>
+                    </div>
+                    <div class="tour-body">
+                        <h3 data-i18n="tour1_title">Food Tour & Cooking Class</h3>
+                        <p data-i18n="tour1_desc">Mercato locale, lezione di cucina tradizionale campana con uno chef esperto e pranzo con i piatti preparati.</p>
+                        <div class="tour-features">
+                            <span class="tour-feature"><i class="fas fa-clock"></i> 5 ore</span>
+                            <span class="tour-feature"><i class="fas fa-user-friends"></i> Max 8</span>
+                            <span class="tour-feature"><i class="fas fa-utensils"></i> Pranzo incl.</span>
+                        </div>
+                        <div class="tour-footer">
+                            <div class="tour-price">€95 <small data-i18n="per_person">/persona</small></div>
+                            <button class="btn btn-primary" onclick="openBooking('Food Tour & Cooking Class', 95)" data-i18n="btn_book">Prenota</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1574126154517-d1e0d89e7344?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Pizza">
+                        <span class="tour-category" style="background: var(--accent);" data-i18n="cat_pizza">Pizza Experience</span>
+                    </div>
+                    <div class="tour-body">
+                        <h3 data-i18n="tour2_title">Pizza Experience Napoletana</h3>
+                        <p data-i18n="tour2_desc">Impara l'arte della vera pizza napoletana: impasto, condimenti e cottura nel forno a legna. Certificato incluso!</p>
+                        <div class="tour-features">
+                            <span class="tour-feature"><i class="fas fa-clock"></i> 3 ore</span>
+                            <span class="tour-feature"><i class="fas fa-user-friends"></i> Max 10</span>
+                            <span class="tour-feature"><i class="fas fa-wine-glass"></i> Degust.</span>
+                        </div>
+                        <div class="tour-footer">
+                            <div class="tour-price">€65 <small data-i18n="per_person">/persona</small></div>
+                            <button class="btn btn-primary" onclick="openBooking('Pizza Experience Napoletana', 65)" data-i18n="btn_book">Prenota</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wine">
+                        <span class="tour-category" style="background: #8e44ad;" data-i18n="cat_wine">Wine & Oil</span>
+                    </div>
+                    <div class="tour-body">
+                        <h3 data-i18n="tour3_title">Wine Tasting & Olio EVO</h3>
+                        <p data-i18n="tour3_desc">Visita a cantine storiche del Cilento e frantoi artigianali. Degustazione di vini DOCG e olio extravergine premiato.</p>
+                        <div class="tour-features">
+                            <span class="tour-feature"><i class="fas fa-clock"></i> 6 ore</span>
+                            <span class="tour-feature"><i class="fas fa-user-friends"></i> Max 12</span>
+                            <span class="tour-feature"><i class="fas fa-gift"></i> Omaggio</span>
+                        </div>
+                        <div class="tour-footer">
+                            <div class="tour-price">€110 <small data-i18n="per_person">/persona</small></div>
+                            <button class="btn btn-primary" onclick="openBooking('Wine Tasting & Olio EVO', 110)" data-i18n="btn_book">Prenota</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Trekking">
+                        <span class="tour-category" style="background: #27ae60;" data-i18n="cat_trek">Trekking</span>
+                    </div>
+                    <div class="tour-body">
+                        <h3 data-i18n="tour4_title">Sentieri del Cilento</h3>
+                        <p data-i18n="tour4_desc">Trekking guidato sui sentieri più spettacolari del Parco Nazionale del Cilento con guide abilitate.</p>
+                        <div class="tour-features">
+                            <span class="tour-feature"><i class="fas fa-clock"></i> 7 ore</span>
+                            <span class="tour-feature"><i class="fas fa-user-friends"></i> Max 15</span>
+                            <span class="tour-feature"><i class="fas fa-hiking"></i> Diff. Media</span>
+                        </div>
+                        <div class="tour-footer">
+                            <div class="tour-price">€55 <small data-i18n="per_person">/persona</small></div>
+                            <button class="btn btn-primary" onclick="openBooking('Sentieri del Cilento', 55)" data-i18n="btn_book">Prenota</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Boat">
+                        <span class="tour-category" style="background: #2980b9;" data-i18n="cat_boat">In Barca</span>
+                    </div>
+                    <div class="tour-body">
+                        <h3 data-i18n="tour5_title">Gita in Barca Costiera</h3>
+                        <p data-i18n="tour5_desc">Naviga lungo la Costiera Amalfitana, bagno nelle grotte marine e aperitivo a bordo al tramonto.</p>
+                        <div class="tour-features">
+                            <span class="tour-feature"><i class="fas fa-clock"></i> 8 ore</span>
+                            <span class="tour-feature"><i class="fas fa-user-friends"></i> Max 12</span>
+                            <span class="tour-feature"><i class="fas fa-cocktail"></i> Aperitivo</span>
+                        </div>
+                        <div class="tour-footer">
+                            <div class="tour-price">€140 <small data-i18n="per_person">/persona</small></div>
+                            <button class="btn btn-primary" onclick="openBooking('Gita in Barca Costiera', 140)" data-i18n="btn_book">Prenota</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tour-card reveal">
+                    <div class="tour-img">
+                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="History">
+                        <span class="tour-category" style="background: #c0392b;" data-i18n="cat_history">Storia</span>
+                    </div>
+                    <div class="tour-body">
+                        <h3 data-i18n="tour6_title">Archeologia & Storia</h3>
+                        <p data-i18n="tour6_desc">Tour completo di Pompei, Ercolano e il Museo Archeologico di Napoli con guida archeologa abilitata.</p>
+                        <div class="tour-features">
+                            <span class="tour-feature"><i class="fas fa-clock"></i> 9 ore</span>
+                            <span class="tour-feature"><i class="fas fa-user-friends"></i> Max 10</span>
+                            <span class="tour-feature"><i class="fas fa-ticket-alt"></i> Biglietti incl.</span>
+                        </div>
+                        <div class="tour-footer">
+                            <div class="tour-price">€130 <small data-i18n="per_person">/persona</small></div>
+                            <button class="btn btn-primary" onclick="openBooking('Archeologia & Storia', 130)" data-i18n="btn_book">Prenota</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content reveal">
+                    <span class="section-tag" data-i18n="about_tag">Chi Siamo</span>
+                    <h2 data-i18n="about_title">Guide Abilitate, Esperienze Autentiche</h2>
+                    <p data-i18n="about_p1">Siamo un team di guide turistiche abilitate e appassionati della Campania. La nostra missione è farti scoprire la vera anima di questa terra, andando oltre i percorsi turistici classici.</p>
+                    <p data-i18n="about_p2">Dal Cilento selvaggio alla Costiera Amalfitana, dai siti archeologici UNESCO alle esperienze enogastronomiche più autentiche: ogni tour è progettato per offrirti ricordi indelebili.</p>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">12+</div>
+                            <div class="stat-label" data-i18n="stat_years">Anni di Esperienza</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5000+</div>
+                            <div class="stat-label" data-i18n="stat_clients">Clienti Soddisfatti</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label" data-i18n="stat_tours">Tour Diversi</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-images reveal">
+                    <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Guide" class="about-img-main">
+                    <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Food" class="about-img-float img-1">
+                    <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Travel" class="about-img-float img-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="why_tag">Perché Sceglierci</span>
+                <h2 data-i18n="why_title">La Differenza Campania Tours</h2>
+                <p data-i18n="why_desc">Non siamo un'agenzia qualsiasi. Offriamo esperienze curate nei minimi dettagli da professionisti del territorio.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-certificate"></i></div>
+                    <h3 data-i18n="feat1_title">Guide Abilitate</h3>
+                    <p data-i18n="feat1_desc">Tutte le nostre guide sono professionisti certificati con profonda conoscenza del territorio campano.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-route"></i></div>
+                    <h3 data-i18n="feat2_title">Sentieri Unici</h3>
+                    <p data-i18n="feat2_desc">Percorsi esclusivi nel Cilento e aree nascoste che non troverai sulle guide turistiche standard.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-euro-sign"></i></div>
+                    <h3 data-i18n="feat3_title">Per Tutte le Tasche</h3>
+                    <p data-i18n="feat3_desc">Tour di lusso ed esperienze accessibili. Personalizziamo ogni itinerario in base al tuo budget.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+                    <h3 data-i18n="feat4_title">Autenticità</h3>
+                    <p data-i18n="feat4_desc">Cooking class con famiglie locali, degustazioni in aziende storiche e cibo vero, non da turista.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" style="color: var(--gold);" data-i18n="reviews_tag">Recensioni</span>
+                <h2 data-i18n="reviews_title">Cosa Dicono di Noi</h2>
+                <p data-i18n="reviews_desc">Più di 5.000 viaggiatori hanno scelto Campania Tours. Ecco alcune delle loro esperienze.</p>
+            </div>
+            <div class="testimonials-slider reveal">
+                <div class="testimonial-card">
+                    <p class="testimonial-text" data-i18n="review1_text">"Il tour nel Cilento è stato incredibile. Siamo andati in posti che non avremmo mai trovato da soli. La guida Marco è stato fantastico, pieno di storie e passione!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Sarah">
+                        <div class="testimonial-author-info">
+                            <h4>Sarah Johnson</h4>
+                            <span>🇺🇸 USA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text" data-i18n="review2_text">"La pizza experience è stata il highlight del nostro viaggio. Imparare a fare la vera pizza napoletana da una famiglia locale è un ricordo che porteremo per sempre."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Carlos">
+                        <div class="testimonial-author-info">
+                            <h4>Carlos Mendez</h4>
+                            <span>🇪🇸 Spagna</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text" data-i18n="review3_text">"Professionalità impeccabile, prezzi onesti e un'attenzione ai dettagli che non trovi da nessuna parte. Il wine tasting nel Cilento è stato magico."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Emma">
+                        <div class="testimonial-author-info">
+                            <h4>Emma Laurent</h4>
+                            <span>🇫🇷 Francia</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text" data-i18n="review4_text">"Abbiamo fatto il tour di Pompei con l'archeologa Giulia. Spiegazioni chiare, coinvolgenti e mai noiose. I nostri figli sono rimasti affascinati!"</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Thomas">
+                        <div class="testimonial-author-info">
+                            <h4>Thomas Weber</h4>
+                            <span>🇩🇪 Germania</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag" data-i18n="contact_tag">Contattaci</span>
+                <h2 data-i18n="contact_title">Prenota la Tua Avventura</h2>
+                <p data-i18n="contact_desc">Scrivici per informazioni, personalizzazioni o prenotazioni. Ti risponderemo entro 24 ore.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal">
+                    <h3 data-i18n="contact_info_title">Restiamo in Contatto</h3>
+                    <p data-i18n="contact_info_desc">Siamo qui per aiutarti a pianificare il viaggio perfetto. Contattaci per qualsiasi domanda!</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h4 data-i18n="contact_address_label">Indirizzo</h4>
+                            <p>Via Roma 42, 84043 Salerno (SA), Italia</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div>
+                            <h4 data-i18n="contact_phone_label">Telefono</h4>
+                            <a href="tel:+39000000000">+39 000 000 000</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h4 data-i18n="contact_email_label">Email</h4>
+                            <a href="mailto:info@campaniatours.it">info@campaniatours.it</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <a href="https://wa.me/39000000000" target="_blank">+39 000 000 000</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form reveal">
+                    <h3 data-i18n="form_title">Inviaci un Messaggio</h3>
+                    <form id="contactForm" onsubmit="handleContact(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-i18n="form_name">Nome</label>
+                                <input type="text" required placeholder="Mario Rossi">
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="form_email">Email</label>
+                                <input type="email" required placeholder="mario@email.it">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="form_subject">Oggetto</label>
+                            <select required>
+                                <option value="" data-i18n="form_select">Seleziona...</option>
+                                <option value="info" data-i18n="form_opt_info">Informazioni generali</option>
+                                <option value="booking" data-i18n="form_opt_booking">Prenotazione tour</option>
+                                <option value="custom" data-i18n="form_opt_custom">Tour personalizzato</option>
+                                <option value="other" data-i18n="form_opt_other">Altro</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="form_message">Messaggio</label>
+                            <textarea rows="5" required placeholder="Scrivi qui il tuo messaggio..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <i class="fas fa-paper-plane"></i> <span data-i18n="form_send">Invia Messaggio</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-compass"></i>
+                        Campania Tours
+                    </a>
+                    <p data-i18n="footer_desc">Esperienze autentiche nella Campania più bella. Guide abilitate, sentieri nascosti e sapori indimenticabili ti aspettano.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 data-i18n="footer_tours">Tour</h4>
+                    <ul>
+                        <li><a href="#tours" data-i18n="footer_tour1">Costiera Amalfitana</a></li>
+                        <li><a href="#tours" data-i18n="footer_tour2">Cilento Nascosto</a></li>
+                        <li><a href="#tours" data-i18n="footer_tour3">Food & Wine</a></li>
+                        <li><a href="#tours" data-i18n="footer_tour4">Archeologia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 data-i18n="footer_company">Azienda</h4>
+                    <ul>
+                        <li><a href="#about" data-i18n="footer_about">Chi Siamo</a></li>
+                        <li><a href="#" data-i18n="footer_guides">Le Nostre Guide</a></li>
+                        <li><a href="#testimonials" data-i18n="footer_reviews">Recensioni</a></li>
+                        <li><a href="#" data-i18n="footer_blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 data-i18n="footer_support">Supporto</h4>
+                    <ul>
+                        <li><a href="#contact" data-i18n="footer_contact">Contatti</a></li>
+                        <li><a href="#" data-i18n="footer_faq">FAQ</a></li>
+                        <li><a href="#" data-i18n="footer_terms">Termini & Condizioni</a></li>
+                        <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Campania Tours. <span data-i18n="footer_rights">Tutti i diritti riservati.</span></p>
+                <p data-i18n="footer_made">Realizzato con ❤️ in Campania</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOOKING MODAL -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal">
+            <button class="modal-close" onclick="closeBooking()"><i class="fas fa-times"></i></button>
+            <h2 data-i18n="modal_title">Prenota il Tuo Tour</h2>
+            <p class="modal-subtitle" data-i18n="modal_subtitle">Completa il form per confermare la tua prenotazione</p>
+            
+            <div class="booking-summary">
+                <h4 data-i18n="modal_summary">Riepilogo</h4>
+                <div class="summary-row">
+                    <span data-i18n="modal_tour">Tour:</span>
+                    <strong id="modalTourName">-</strong>
+                </div>
+                <div class="summary-row">
+                    <span data-i18n="modal_price">Prezzo base:</span>
+                    <strong id="modalPrice">-</strong>
+                </div>
+                <div class="summary-row">
+                    <span data-i18n="modal_people">Partecipanti:</span>
+                    <strong id="modalPeople">1 persona</strong>
+                </div>
+                <div class="summary-row total">
+                    <span data-i18n="modal_total">Totale:</span>
+                    <strong id="modalTotal">-</strong>
+                </div>
+            </div>
+
+            <form id="bookingForm" onsubmit="handleBooking(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="modal_name">Nome *</label>
+                        <input type="text" id="bookName" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="modal_surname">Cognome *</label>
+                        <input type="text" id="bookSurname" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="modal_email">Email *</label>
+                    <input type="email" id="bookEmail" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="modal_phone">Telefono *</label>
+                        <input type="tel" id="bookPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="modal_people_label">Partecipanti *</label>
+                        <input type="number" id="bookPeople" min="1" max="20" value="1" required onchange="updateTotal()">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label data-i18n="modal_date">Data preferita *</label>
+                        <input type="date" id="bookDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="modal_time">Orario preferito</label>
+                        <select id="bookTime">
+                            <option value="morning" data-i18n="opt_morning">Mattina (9:00)</option>
+                            <option value="afternoon" data-i18n="opt_afternoon">Pomeriggio (14:00)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label data-i18n="modal_notes">Note speciali</label>
+                    <textarea rows="3" placeholder="Allergie, esigenze particolari, ecc."></textarea>
+                </div>
+
+                <label style="display:block; margin-bottom:15px; font-weight:500;" data-i18n="modal_payment">Metodo di Pagamento</label>
+                <div class="payment-methods">
+                    <div class="payment-method selected" onclick="selectPayment(this)">
+                        <i class="fab fa-cc-visa"></i>
+                        <span>Carta</span>
+                    </div>
+                    <div class="payment-method" onclick="selectPayment(this)">
+                        <i class="fab fa-paypal"></i>
+                        <span>PayPal</span>
+                    </div>
+                    <div class="payment-method" onclick="selectPayment(this)">
+                        <i class="fab fa-apple"></i>
+                        <span>Apple Pay</span>
+                    </div>
+                    <div class="payment-method" onclick="selectPayment(this)">
+                        <i class="fas fa-university"></i>
+                        <span>Bonifico</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full" style="margin-top:10px;">
+                    <i class="fas fa-lock"></i> <span data-i18n="modal_pay">Conferma e Paga</span>
+                </button>
+                <p style="text-align:center; margin-top:15px; font-size:0.85rem; color:var(--text-light);">
+                    <i class="fas fa-shield-alt"></i> <span data-i18n="modal_secure">Pagamento sicuro e criptato</span>
+                </p>
+            </form>
+        </div>
     </div>
-  </section>
 
-  <!-- Tours -->
-  <section id="tour">
-    <h2 class="section-title" data-lang="it" class="active">I Nostri <span>Tour</span></h2>
-    <h2 class="section-title" data-lang="en">Our <span>Tours</span></h2>
-    <h2 class="section-title" data-lang="es">Nuestros <span>Tours</span></h2>
-    
-    <p class="section-subtitle" data-lang="it" class="active">Escursioni autentiche nel cuore della Campania. Sentieri nascosti, mete iconiche e sapori veri.</p>
-    <p class="section-subtitle" data-lang="en">Authentic excursions in the heart of Campania. Hidden trails, iconic sites and real flavors.</p>
-    <p class="section-subtitle" data-lang="es">Excursiones auténticas en el corazón de Campania. Senderos ocultos, sitios icónicos y sabores reales.</p>
-    
-    <div class="tours-grid">
-      <div class="tour-card">
-        <div class="tour-badge">Economy</div>
-        <img src="https://images.unsplash.com/photo-1598890779672-5664ba9d8b3e?w=800" alt="Sentieri del Cilento">
-        <div class="tour-content">
-          <h3 data-lang="it" class="active">Sentieri del Cilento</h3>
-          <h3 data-lang="en">Cilento Trails</h3>
-          <h3 data-lang="es">Senderos del Cilento</h3>
-          <p data-lang="it" class="active">Trekking nel Parco Nazionale con guida abilitata. Grotte, costa e borghi medievali.</p>
-          <p data-lang="en">Trekking in the National Park with licensed guide. Caves, coast and medieval villages.</p>
-          <p data-lang="es">Trekking en el Parque Nacional con guía autorizado. Cuevas, costa y pueblos medievales.</p>
-          <div class="tour-features">
-            <span>🗓️ 6h</span><span>👥 Max 15</span><span>🥾 Medio</span>
-          </div>
-          <div class="tour-footer">
-            <div class="price">€45 <span data-lang="it" class="active">/ pers</span><span data-lang="en">/ pp</span><span data-lang="es">/ pers</span></div>
-            <button class="btn btn-book" onclick="openBooking('Sentieri del Cilento', 45)" data-lang="it" class="active">Prenota</button>
-            <button class="btn btn-book" onclick="openBooking('Cilento Trails', 45)" data-lang="en">Book</button>
-            <button class="btn btn-book" onclick="openBooking('Senderos del Cilento', 45)" data-lang="es">Reservar</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="tour-card">
-        <div class="tour-badge premium">Premium</div>
-        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800" alt="Cooking Class">
-        <div class="tour-content">
-          <h3>Food Tour + Cooking Class</h3>
-          <p data-lang="it" class="active">Pizza experience, olive oil tasting e vino. Impara a fare la pasta con chef locale.</p>
-          <p data-lang="en">Pizza experience, olive oil and wine tasting. Learn to make pasta with a local chef.</p>
-          <p data-lang="es">Pizza experience, cata de aceite y vino. Aprende a hacer pasta con chef local.</p>
-          <div class="tour-features">
-            <span>🗓️ 4h</span><span>👥 Max 10</span><span>🍝 + 🍷</span>
-          </div>
-          <div class="tour-footer">
-            <div class="price">€95 <span data-lang="it" class="active">/ pers</span><span data-lang="en">/ pp</span><span data-lang="es">/ pers</span></div>
-            <button class="btn btn-book" onclick="openBooking('Food Tour + Cooking Class', 95)" data-lang="it" class="active">Prenota</button>
-            <button class="btn btn-book" onclick="openBooking('Food Tour + Cooking Class', 95)" data-lang="en">Book</button>
-            <button class="btn btn-book" onclick="openBooking('Food Tour + Clase de Cocina', 95)" data-lang="es">Reservar</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="tour-card">
-        <div class="tour-badge">Economy</div>
-        <img src="https://images.unsplash.com/photo-1552832230-c0197ed32d3f?w=800" alt="Pompei">
-        <div class="tour-content">
-          <h3>Pompei + Vesuvio</h3>
-          <p data-lang="it" class="active">Visita guidata agli scavi + salita al cratere. Skip-the-line incluso.</p>
-          <p data-lang="en">Guided tour of the ruins + crater hike. Skip-the-line included.</p>
-          <p data-lang="es">Visita guiada a las ruinas + subida al cráter. Sin colas incluido.</p>
-          <div class="tour-features">
-            <span>🗓️ 7h</span><span>👥 Max 20</span><span>🎫 Incluso</span>
-          </div>
-          <div class="tour-footer">
-            <div class="price">€65 <span data-lang="it" class="active">/ pers</span><span data-lang="en">/ pp</span><span data-lang="es">/ pers</span></div>
-            <button class="btn btn-book" onclick="openBooking('Pompei + Vesuvio', 65)" data-lang="it" class="active">Prenota</button>
-            <button class="btn btn-book" onclick="openBooking('Pompeii + Vesuvius', 65)" data-lang="en">Book</button>
-            <button class="btn btn-book" onclick="openBooking('Pompeya + Vesubio', 65)" data-lang="es">Reservar</button>
-          </div>
-        </div>
-      </div>
-      
-      <div class="tour-card">
-        <div class="tour-badge premium">Premium</div>
-        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf4640fe?w=800" alt="Capri">
-        <div class="tour-content">
-          <h3>Capri & Anacapri</h3>
-          <p data-lang="it" class="active">Barca privata, Grotta Azzurra e Villa San Michele. Pranzo vista mare.</p>
-          <p data-lang="en">Private boat, Blue Grotto and Villa San Michele. Seaside lunch.</p>
-          <p data-lang="es">Barco privado, Gruta Azul y Villa San Michele. Almuerzo frente al mar.</p>
-          <div class="tour-features">
-            <span>🗓️ 8h</span><span>👥 Max 8</span><span>⛵ Privato</span>
-          </div>
-          <div class="tour-footer">
-            <div class="price">€180 <span data-lang="it" class="active">/ pers</span><span data-lang="en">/ pp</span><span data-lang="es">/ pers</span></div>
-            <button class="btn btn-book" onclick="openBooking('Capri & Anacapri', 180)" data-lang="it" class="active">Prenota</button>
-            <button class="btn btn-book" onclick="openBooking('Capri & Anacapri', 180)" data-lang="en">Book</button>
-            <button class="btn btn-book" onclick="openBooking('Capri & Anacapri', 180)" data-lang="es">Reservar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- USP -->
-  <section class="usp">
-    <h2 class="section-title" data-lang="it" class="active">Perché <span>Campania Tours</span></h2>
-    <h2 class="section-title" data-lang="en">Why <span>Campania Tours</span></h2>
-    <h2 class="section-title" data-lang="es">Por qué <span>Campania Tours</span></h2>
-    <div class="usp-grid">
-      <div>
-        <div class="usp-icon">🎓</div>
-        <h3 data-lang="it" class="active">Guide Abilitate</h3>
-        <h3 data-lang="en">Licensed Guides</h3>
-        <h3 data-lang="es">Guías Autorizados</h3>
-        <p data-lang="it" class="active">Solo guide regionali certificate che vivono il territorio</p>
-        <p data-lang="en">Only certified regional guides who live the territory</p>
-        <p data-lang="es">Solo guías regionales certificados que viven el territorio</p>
-      </div>
-      <div>
-        <div class="usp-icon">🥾</div>
-        <h3 data-lang="it" class="active">Sentieri Autentici</h3>
-        <h3 data-lang="en">Authentic Trails</h3>
-        <h3 data-lang="es">Senderos Auténticos</h3>
-        <p data-lang="it" class="active">Portiamo dove i bus non arrivano: Cilento vero</p>
-        <p data-lang="en">We go where buses don't: the real Cilento</p>
-        <p data-lang="es">Vamos donde no llegan los buses: el Cilento real</p>
-      </div>
-      <div>
-        <div class="usp-icon">💰</div>
-        <h3 data-lang="it" class="active">Per Tutte le Tasche</h3>
-        <h3 data-lang="en">For Every Budget</h3>
-        <h3 data-lang="es">Para Todos los Bolsillos</h3>
-        <p data-lang="it" class="active">Da €45 a esperienze premium. Scegli tu</p>
-        <p data-lang="en">From €45 to premium experiences. You choose</p>
-        <p data-lang="es">Desde €45 a experiencias premium. Tú eliges</p>
-      </div>
-      <div>
-        <div class="usp-icon">🍝</div>
-        <h3>Food Experience</h3>
-        <p data-lang="it" class="active">Cooking class, wine & olive oil tasting con produttori locali</p>
-        <p data-lang="en">Cooking classes, wine & olive oil tasting with local producers</p>
-        <p data-lang="es">Clases de cocina, cata de vino y aceite con productores locales</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="chi-siamo">
-    <h2 class="section-title" data-lang="it" class="active">Chi <span>Siamo</span></h2>
-    <h2 class="section-title" data-lang="en">About <span>Us</span></h2>
-    <h2 class="section-title" data-lang="es">Quiénes <span>Somos</span></h2>
-    <div class="about-content">
-      <div>
-        <p data-lang="it" class="active">Siamo nati nel Cilento con una missione: far vivere la Campania autentica. Non solo Pompei e Capri, ma anche i sentieri che solo i locali conoscono, i sapori delle masserie, i racconti dei pescatori.</p>
-        <p data-lang="en">We were born in Cilento with a mission: to show the authentic Campania. Not only Pompeii and Capri, but also trails only locals know, farmhouse flavors, fishermen's stories.</p>
-        <p data-lang="es">Nacimos en el Cilento con una misión: mostrar la Campania auténtica. No solo Pompeya y Capri, sino también senderos que solo conocen los locales, sabores de granja, historias de pescadores.</p>
-        <br>
-        <p data-lang="it" class="active"><strong>100% Guide abilitate Regione Campania.</strong> Piccoli gruppi, grande cura. Dalla famiglia al backpacker, dall'economy al luxury: troviamo il tour giusto per te.</p>
-        <p data-lang="en"><strong>100% Licensed Campania Region Guides.</strong> Small groups, great care. From family to backpacker, from economy to luxury: we find the right tour for you.</p>
-        <p data-lang="es"><strong>100% Guías autorizados Región Campania.</strong> Grupos pequeños, gran cuidado. De familia a mochilero, de economy a luxury: encontramos el tour adecuado para ti.</p>
-      </div>
-      <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=800" alt="Guida Campania Tours">
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section class="contact" id="contatti">
-    <h2 class="section-title" data-lang="it" class="active">Contattaci</h2>
-    <h2 class="section-title" data-lang="en">Contact Us</h2>
-    <h2 class="section-title" data-lang="es">Contáctanos</h2>
-    <div class="contact-grid">
-      <div class="contact-info">
-        <h3 data-lang="it" class="active">Siamo qui per te</h3>
-        <h3 data-lang="en">We're here for you</h3>
-        <h3 data-lang="es">Estamos aquí para ti</h3>
-        <div class="contact-item"><strong>Email:</strong> info@campaniatours.it</div>
-        <div class="contact-item"><strong>WhatsApp:</strong> +39 XXX XXX XXXX</div>
-        <div class="contact-item"><strong data-lang="it" class="active">Dove:</strong><strong data-lang="en">Location:</strong><strong data-lang="es">Ubicación:</strong> Scafati, Campania</div>
-        <div class="contact-item"><strong>Instagram:</strong> @campaniatours</div>
-      </div>
-      <form class="contact-form" id="contactForm">
-        <div class="form-group"><input type="text" placeholder="Nome / Name / Nombre" required></div>
-        <div class="form-group"><input type="email" placeholder="Email" required></div>
-        <div class="form-group"><textarea rows="5" placeholder="Messaggio / Message / Mensaje" required></textarea></div>
-        <button type="submit" class="btn" data-lang="it" class="active">Invia Messaggio</button>
-        <button type="submit" class="btn" data-lang="en">Send Message</button>
-        <button type="submit" class="btn" data-lang="es">Enviar Mensaje</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div>
-        <h3>Campania Tours</h3>
-        <p data-lang="it" class="active">Escursioni autentiche tra Cilento, Costiera e Vesuvio</p>
-        <p data-lang="en">Authentic excursions between Cilento, Coast and Vesuvius</p>
-        <p data-lang="es">Excursiones auténticas entre Cilento, Costa y Vesubio</p>
-      </div>
-      <div><h3>Tour</h3><p>Sentieri Cilento<br>Food Tour<br>Pompei<br>Capri</p></div>
-      <div><h3>Info</h3><p>Privacy<br>Termini<br>Cookie<br>P.IVA 12345678901</p></div>
-    </div>
-    <div class="footer-bottom"><p>&copy; 2026 Campania Tours. Tutti i diritti riservati.</p></div>
-  </footer>
-
-  <!-- Booking Modal -->
-  <div class="modal" id="bookingModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 id="modalTourName">Prenota Tour</h2>
-        <button class="close-modal" onclick="closeBooking()">&times;</button>
-      </div>
-      <form id="bookingForm">
-        <div class="form-group">
-          <label data-lang="it" class="active">Data</label><label data-lang="en">Date</label><label data-lang="es">Fecha</label>
-          <input type="date" id="bookingDate" required>
-        </div>
-        <div class="form-group">
-          <label data-lang="it" class="active">Persone</label><label data-lang="en">People</label><label data-lang="es">Personas</label>
-          <select id="bookingPeople" required>
-            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5+">5+</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Nome</label><input type="text" required></div>
-        <div class="form-group"><label>Email</label><input type="email" required></div>
-        <div class="form-group">
-          <label data-lang="it" class="active">Note</label><label data-lang="en">Notes</label><label data-lang="es">Notas</label>
-          <textarea rows="3"></textarea>
-        </div>
-        <div style="margin: 1.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
-          <strong data-lang="it" class="active">Totale: €</strong><strong data-lang="en">Total: €</strong><strong data-lang="es">Total: €</strong>
-          <span id="bookingTotal">0</span>
-        </div>
-        <button type="submit" class="btn" style="width: 100%;" data-lang="it" class="active">Procedi al Pagamento</button>
-        <button type="submit" class="btn" style="width: 100%;" data-lang="en">Proceed to Payment</button>
-        <button type="submit" class="btn" style="width: 100%;" data-lang="es">Proceder al Pago</button>
-      </form>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
+
