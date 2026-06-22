@@ -1,82 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Echoes of Pompeii & Campania Tours</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campania Tours - Experience the Magic</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- NAVIGAZIONE E SELETTORE LINGUA -->
-  <header>
-    <div class="logo">Echoes of Pompeii</div>
-    <div class="lang-selector">
-      <button onclick="changeLang('en')" id="btn-en" class="active">EN</button>
-      <button onclick="changeLang('it')" id="btn-it">IT</button>
-      <button onclick="changeLang('es')" id="btn-es">ES</button>
-    </div>
-  </header>
-
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 id="hero-title">Experience the Magic of Campania</h1>
-      <p id="hero-desc">Exclusive guided tours to Pompeii, Amalfi Coast, Capri, and hidden trails with local experts.</p>
-      <a href="#tours" class="btn-main" id="hero-btn">Explore Experiences</a>
-    </div>
-  </section>
-
-  <!-- SEZIONE TOUR -->
-  <section id="tours" class="tours-section">
-    <h2 id="tours-heading">Our Top Experiences</h2>
-    <div class="tours-grid">
-      
-      <!-- Tour 1: Archeologia (Pompei) -->
-      <div class="tour-card">
-        <div class="tour-img bg-pompeii"></div>
-        <div class="tour-info">
-          <h3 id="t1-title">History & Archaeology</h3>
-          <p id="t1-desc">Walk through ancient history. Discover Pompeii, Herculaneum, and Mount Vesuvius with official guides.</p>
+    <!-- NAV BAR -->
+    <header>
+        <div class="logo">Campania Tours</div>
+        <div class="lang-switcher">
+            <span id="btn-it" class="lang-btn active" onclick="switchLang('it')">IT</span>
+            <span id="btn-en" class="lang-btn" onclick="switchLang('en')">EN</span>
+            <span id="btn-es" class="lang-btn" onclick="switchLang('es')">ES</span>
         </div>
-      </div>
+    </header>
 
-      <!-- Tour 2: Costiera e Capri -->
-      <div class="tour-card">
-        <div class="tour-img bg-amalfi"></div>
-        <div class="tour-info">
-          <h3 id="t2-title">Coast & Islands</h3>
-          <p id="t2-desc">Discover the breathtaking views of Positano, Amalfi, and the crystal-clear waters of Capri.</p>
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 id="hero-title">Scopri la Campania con una Guida Locale</h1>
+            <p id="hero-subtitle">Tour esclusivi a Pompei, Costiera Amalfitana e Reggia di Caserta.</p>
+            <a href="https://wa.me/393278631588?text=Ciao!%20Sarei%20interessato%20a%20ricevere%20maggiori%20informazioni%20sui%20vostri%20tour%20in%20Campania." class="btn-main" id="hero-btn">Prenota un Tour</a>
         </div>
-      </div>
+    </section>
 
-      <!-- Tour 3: Natura e Sentieri -->
-      <div class="tour-card">
-        <div class="tour-img bg-nature"></div>
-        <div class="tour-info">
-          <h3 id="t3-title">Nature & Hiking</h3>
-          <p id="t3-desc">Trek the famous Path of the Gods and explore the wild, authentic beauty of Cilento.</p>
+    <!-- TOURS SECTION -->
+    <section class="tours" id="tours-section">
+        <h2 id="tours-title">I Nostri Tour più Richiesti</h2>
+        <div class="tours-grid">
+            
+            <!-- TOUR 1: POMPEI -->
+            <div class="tour-card">
+                <img src="https://images.unsplash.com/photo-1595113063593-9c8846c4f985?q=80&w=600" alt="Pompeii">
+                <div class="tour-info">
+                    <h3>Pompeii</h3>
+                    <p class="tour-desc" data-it="Un viaggio nel tempo per rivivere la storia dell'antica città romana sepolta dal Vesuvio." data-en="A journey through time to relive the history of the ancient Roman city buried by Vesuvius." data-es="Un viaje en el tiempo para revivir la historia de la antigua ciudad romana sepultada por el Vesubio."></p>
+                </div>
+            </div>
+
+            <!-- TOUR 2: AMALFI COAST -->
+            <div class="tour-card">
+                <img src="https://images.unsplash.com/photo-1533221980862-416b23f26a8d?q=80&w=600" alt="Amalfi Coast">
+                <div class="tour-info">
+                    <h3>Amalfi Coast</h3>
+                    <p class="tour-desc" data-it="Panorami mozzafiato, borghi a picco sul mare e i colori unici di Positano e Amalfi." data-en="Breathtaking views, cliffside villages and the unique colors of Positano and Amalfi." data-es="Vistas impresionantes, pueblos acantilados y los colores únicos de Positano y Amalfi."></p>
+                </div>
+            </div>
+
+            <!-- TOUR 3: CASERTA -->
+            <div class="tour-card">
+                <img src="https://images.unsplash.com/photo-1621379965033-91b5c2a7924c?q=80&w=600" alt="Royal Palace of Caserta">
+                <div class="tour-info">
+                    <h3>Reggia di Caserta</h3>
+                    <p class="tour-desc" data-it="L'eleganza della Versailles italiana, tra appartamenti reali e giardini immensi." data-en="The elegance of the Italian Versailles, between royal apartments and immense gardens." data-es="La elegancia del Versalles italiano, tra apartamentos reales e inmensos jardines."></p>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ABOUT SECTION -->
+    <section class="about">
+        <div class="about-container">
+            <div class="about-text">
+                <h2 id="about-title">Chi Siamo</h2>
+                <p id="about-p">Siamo guide professioniste abilitate, nate e cresciute in Campania. La nostra missione è farti vivere questa terra non come un semplice turista, ma come un locale, scoprendo segreti, storie e tradizioni autentiche.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1616428271018-b21a364101e4?q=80&w=600" alt="Campania view">
+            </div>
+        </div>
+    </section>
 
-  <!-- CONTATTI -->
-  <section id="contact" class="contact-section">
-    <h2 id="contact-title">Plan Your Custom Tour</h2>
-    <p id="contact-desc">Let an expert local guide tailor the perfect itinerary for your holiday.</p>
-    <div class="cta-container">
-      <a href="https://wa.me/39XXXXXXXXXX" class="btn-whatsapp" id="whatsapp-btn">Chat on WhatsApp</a>
-    </div>
-  </section>
+    <!-- CONTACT / FOOTER -->
+    <footer>
+        <h2 id="contact-title">Inizia la tua Avventura</h2>
+        <p id="contact-subtitle">Hai domande o vuoi personalizzare il tuo itinerario? Contattaci direttamente su WhatsApp per una risposta immediata.</p>
+        <a href="https://wa.me/393278631588?text=Ciao!%20Sarei%20interessato%20a%20ricevere%20maggiori%20informazioni%20sui%20vostri%20tour%20in%20Campania." class="whatsapp-btn">
+            <span class="wa-icon">💬</span> Parla con noi
+        </a>
+        <p class="credits">&copy; 2026 Campania Tours. All rights reserved.</p>
+    </footer>
 
-  <footer>
-    <p>&copy; 2026 Echoes of Pompeii. All rights reserved.</p>
-  </footer>
-
-  <!-- COLLEGAMENTO AL MOTORE DELLE LINGUE (Ex Passo 4) -->
-  <script src="script.js"></script>
-
+    <script src="script.js"></script>
 </body>
 </html>
