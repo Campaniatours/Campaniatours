@@ -35,7 +35,7 @@ header {
 /* HERO WITH CAMPANIA BACKGROUND */
 .hero {
   padding: 80px 20px;
-  background: linear-gradient(rgba(26,42,58,0.7), rgba(26,42,58,0.7)), url('https://picsum.photos/id/1015/800/600') center/cover;
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1533221980862-416b23f26a8d?q=80&w=1200') no-repeat center center/cover;
   text-align: center;
   color: #fff;
 }
