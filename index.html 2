@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Echoes of Pompeii & Campania Tours</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVIGAZIONE E SELETTORE LINGUA -->
+  <header>
+    <div class="logo">Echoes of Pompeii</div>
+    <div class="lang-selector">
+      <button onclick="changeLang('en')" id="btn-en" class="active">EN</button>
+      <button onclick="changeLang('it')" id="btn-it">IT</button>
+      <button onclick="changeLang('es')" id="btn-es">ES</button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 id="hero-title">Experience the Magic of Campania</h1>
+      <p id="hero-desc">Exclusive guided tours to Pompeii, Amalfi Coast, Capri, and hidden trails with local experts.</p>
+      <a href="#tours" class="btn-main" id="hero-btn">Explore Experiences</a>
+    </div>
+  </section>
+
+  <!-- SEZIONE TOUR -->
+  <section id="tours" class="tours-section">
+    <h2 id="tours-heading">Our Top Experiences</h2>
+    <div class="tours-grid">
+      
+      <!-- Tour 1: Archeologia (Pompei) -->
+      <div class="tour-card">
+        <div class="tour-img bg-pompeii"></div>
+        <div class="tour-info">
+          <h3 id="t1-title">History & Archaeology</h3>
+          <p id="t1-desc">Walk through ancient history. Discover Pompeii, Herculaneum, and Mount Vesuvius with official guides.</p>
+        </div>
+      </div>
+
+      <!-- Tour 2: Costiera e Capri -->
+      <div class="tour-card">
+        <div class="tour-img bg-amalfi"></div>
+        <div class="tour-info">
+          <h3 id="t2-title">Coast & Islands</h3>
+          <p id="t2-desc">Discover the breathtaking views of Positano, Amalfi, and the crystal-clear waters of Capri.</p>
+        </div>
+      </div>
+
+      <!-- Tour 3: Natura e Sentieri -->
+      <div class="tour-card">
+        <div class="tour-img bg-nature"></div>
+        <div class="tour-info">
+          <h3 id="t3-title">Nature & Hiking</h3>
+          <p id="t3-desc">Trek the famous Path of the Gods and explore the wild, authentic beauty of Cilento.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTATTI -->
+  <section id="contact" class="contact-section">
+    <h2 id="contact-title">Plan Your Custom Tour</h2>
+    <p id="contact-desc">Let an expert local guide tailor the perfect itinerary for your holiday.</p>
+    <div class="cta-container">
+      <a href="https://wa.me/39XXXXXXXXXX" class="btn-whatsapp" id="whatsapp-btn">Chat on WhatsApp</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Echoes of Pompeii. All rights reserved.</p>
+  </footer>
+
+  <!-- COLLEGAMENTO AL MOTORE DELLE LINGUE (Ex Passo 4) -->
+  <script src="script.js"></script>
+
+</body>
+</html>
