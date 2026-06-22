@@ -1,68 +1,83 @@
-const data = {
-  en: {
-    heroTitle: "Experience the Magic of Campania",
-    heroDesc: "Exclusive guided tours to Pompeii, Amalfi Coast, Capri, and hidden trails with local experts.",
-    heroBtn: "Explore Experiences",
-    toursHeading: "Our Top Experiences",
-    t1Title: "History & Archaeology",
-    t1Desc: "Walk through ancient history. Discover Pompeii, Herculaneum, and Mount Vesuvius with official guides.",
-    t2Title: "Coast & Islands",
-    t2Desc: "Discover the breathtaking views of Positano, Amalfi, and the crystal-clear waters of Capri.",
-    t3Title: "Nature & Hiking",
-    t3Desc: "Trek the famous Path of the Gods and explore the wild, authentic beauty of Cilento.",
-    contactTitle: "Plan Your Custom Tour",
-    contactDesc: "Let an expert local guide tailor the perfect itinerary for your holiday.",
-    whatsappBtn: "Chat on WhatsApp"
-  },
-  it: {
-    heroTitle: "Vivi la Magia della Campania",
-    heroDesc: "Tour guidati esclusivi per Pompei, Costiera Amalfitana, Capri e sentieri nascosti con esperti locali.",
-    heroBtn: "Esplora le Esperienze",
-    toursHeading: "Le Nostre Migliori Esperienze",
-    t1Title: "Storia & Archeologia",
-    t1Desc: "Cammina nella storia antica. Scopri Pompei, Ercolano e il Vesuvio con guide ufficiali.",
-    t2Title: "Costiera & Isole",
-    t2Desc: "Scopri i panorami mozzafiato di Positano, Amalfi e le acque cristalline dell'isola di Capri.",
-    t3Title: "Natura & Trekking",
-    t3Desc: "Percorri il famoso Sentiero degli Dei ed esplora la bellezza selvaggia e autentica del Cilento.",
-    contactTitle: "Pianifica il tuo Tour Su Misura",
-    contactDesc: "Lascia che una guida locale esperta crei l'itinerario perfetto per la tua vacanza.",
-    whatsappBtn: "Chatta su WhatsApp"
-  },
-  es: {
-    heroTitle: "Vive la Magia de Campania",
-    heroDesc: "Tours guiados exclusivos a Pompeya, la Costa Amalfitana, Capri y senderos ocultos con expertos locales.",
-    heroBtn: "Explorar Experiencias",
-    toursHeading: "Nuestras Mejores Experiencias",
-    t1Title: "Historia y Arqueología",
-    t1Desc: "Camina por la historia antigua. Descubre Pompeya, Herculano y el Vesubio con guías oficiales.",
-    t2Title: "Costa e Islas",
-    t2Desc: "Descubre las vistas impresionantes de Positano, Amalfi y las aguas cristalinas de la isla de Capri.",
-    t3Title: "Naturaleza y Senderismo",
-    t3Desc: "Recorre el famoso Sendero de los Dioses y explora la belleza salvaje y auténtica del Cilento.",
-    contactTitle: "Planifica tu Tour Personalizado",
-    contactDesc: "Deja que un guía local experto diseñe el itinerario perfecto para tus vacaciones.",
-    whatsappBtn: "Chatear por WhatsApp"
-  }
-};
+// Lingue
+let currentLang = 'it';
+let currentTourPrice = 0;
 
-function changeLang(lang) {
-  // Aggiorna i testi
-  document.getElementById('hero-title').textContent = data[lang].heroTitle;
-  document.getElementById('hero-desc').textContent = data[lang].heroDesc;
-  document.getElementById('hero-btn').textContent = data[lang].heroBtn;
-  document.getElementById('tours-heading').textContent = data[lang].toursHeading;
-  document.getElementById('t1-title').textContent = data[lang].t1Title;
-  document.getElementById('t1-desc').textContent = data[lang].t1Desc;
-  document.getElementById('t2-title').textContent = data[lang].t2Title;
-  document.getElementById('t2-desc').textContent = data[lang].t2Desc;
-  document.getElementById('t3-title').textContent = data[lang].t3Title;
-  document.getElementById('t3-desc').textContent = data[lang].t3Desc;
-  document.getElementById('contact-title').textContent = data[lang].contactTitle;
-  document.getElementById('contact-desc').textContent = data[lang].contactDesc;
-  document.getElementById('whatsapp-btn').textContent = data[lang].whatsappBtn;
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.setLang;
+    switchLang(lang);
+  });
+});
 
-  // Gestione classe attiva sui bottoni
-  document.querySelectorAll('.lang-selector button').forEach(btn => btn.classList.remove('active'));
-  document.getElementById('btn-' + lang).classList.add('active');
+function switchLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    el.classList.remove('active');
+  });
+  document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+    el.classList.add('active');
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`[data-set-lang="${lang}"]`).classList.add('active');
+  document.documentElement.lang = lang;
 }
+
+// Menu mobile
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('navLinks');
+
+menuBtn.addEventListener('click', () => {
+  navLinks.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('active');
+  });
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Booking Modal
+function openBooking(tourName, price) {
+  currentTourPrice = price;
+  document.getElementById('modalTourName').textContent = tourName;
+  document.getElementById('bookingTotal').textContent = price;
+  document.getElementById('bookingModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBooking() {
+  document.getElementById('bookingModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// Calcola totale in base alle persone
+document.getElementById('bookingPeople').addEventListener('change', (e) => {
+  const people = e.target.value === '5+' ? 5 : parseInt(e.target.value);
+  document.getElementById('bookingTotal').textContent = currentTourPrice * people;
+});
+
+// Submit booking - qui colleghi Stripe/PayPal
+document.getElementById('bookingForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  // DEMO: qui invece dell'alert devi chiamare Stripe
+  alert('Per collegare il pagamento reale: 1) Crea account Stripe 2) Sostituisci questo alert con checkout Stripe. Ti spiego come sotto 👇');
+  
+  // Esempio Stripe Checkout:
+  // const stripe = Stripe('pk_test_TUA_CHIAVE');
+  // stripe.redirectToCheckout({ sessionId: 'SESSION_ID_DAL_BACKEND' });
+});
+
+// Contact form
+document.getElementById('contactForm').addEventListener('submit',
