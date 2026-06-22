@@ -1,12 +1,23 @@
-/* RESET E FONT */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ==========================================
+   1. RESET, FONTS E REGOLE BASE
+   ========================================== */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
 body {
   font-family: 'Segoe UI', Roboto, sans-serif;
   color: #333;
   line-height: 1.6;
+  background-color: #f8f9fa;
 }
 
-/* HEADER & LINGUE */
+/* ==========================================
+   2. HEADER & SELETTORE LINGUA
+   ========================================== */
 header {
   display: flex;
   justify-content: space-between;
@@ -14,169 +25,84 @@ header {
   padding: 15px 5%;
   background: #1a2a3a;
   color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.logo { font-size: 1.2rem; font-weight: bold; letter-spacing: 1px; }
+
+.logo { 
+  font-size: 1.3rem; 
+  font-weight: bold; 
+  letter-spacing: 1px; 
+  color: #ffc107;
+}
+
 .lang-selector button {
   background: transparent;
-  border: 1px solid #fff;
   color: #fff;
-  padding: 4px 8px;
+  border: 1px solid #fff;
+  padding: 5px 10px;
   margin-left: 5px;
   cursor: pointer;
-  border-radius: 3px;
-  font-size: 0.8rem;
+  border-radius: 4px;
   font-weight: bold;
-}
-.lang-selector button.active {
-  background: #e67e22;
-  border-color: #e67e22;
+  transition: 0.3s;
 }
 
-/* HERO WITH CAMPANIA BACKGROUND */
+.lang-selector button.active, .lang-selector button:hover {
+  background: #ffc107;
+  color: #1a2a3a;
+  border-color: #ffc107;
+}
+
+/* ==========================================
+   3. HERO SECTION (SFONDO INIZIALE COSTIERA)
+   ========================================== */
 .hero {
-  padding: 80px 20px;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1533221980862-416b23f26a8d?q=80&w=1200') no-repeat center center/cover;
+  padding: 100px 20px;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1533221980862-416b23f26a8d?q=80&w=1200') no-repeat center center/cover;
   text-align: center;
   color: #fff;
-}
-.hero h1 { font-size: 2.2rem; margin-bottom: 15px; font-family: serif; }
-.hero p { font-size: 1.1rem; margin-bottom: 25px; opacity: 0.9; }
-.btn-main { display: inline-block; background: #e67e22; color: #fff; padding: 10px 25px; border-radius: 25px; text-decoration: none; font-weight: bold; }
-
-/* TOURS */
-.tours-section { padding: 40px 20px; background: #f4f6f7; text-align: center; }
-.tours-section h2 { margin-bottom: 30px; color: #1a2a3a; font-family: serif; font-size: 1.8rem; }
-.tours-grid { display: flex; flex-direction: column; gap: 25px; }
-.tour-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-.tour-img { height: 200px; background-size: cover; background-position: center; }
-
-/* NUOVI LINK IMMAGINI SICURI AL 100% senza blocchi */
-.bg-pompeii { background-image: url('https://images.unsplash.com/photo-1595113063593-9c8846c4f985?q=80&w=600'); } 
-.bg-amalfi { background-image: url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?q=80&w=600'); }  
-.bg-nature { background-image: url('https://images.unsplash.com/photo-1621379965033-91b5c2a7924c?q=80&w=600'); }  
-
-
-.tour-info { padding: 20px; text-align: left; }
-.tour-info h3 { margin-bottom: 8px; color: #1a2a3a; font-size: 1.3rem; }
-
-/* CONTATTI */
-.contact-section { padding: 40px 20px; text-align: center; background: #fff; }
-.contact-section h2 { margin-bottom: 10px; color: #1a2a3a; }
-.cta-container { margin-top: 25px; }
-.btn-whatsapp { display: inline-block; background: #25D366; color: #fff; padding: 12px 35px; border-radius: 25px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(37,211,102,0.3); }
-footer { background: #1a2a3a; color: #fff; text-align: center; padding: 15px; font-size: 0.8rem; }
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.tour-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.tour-info {
-    padding: 20px;
-    text-align: left;
+.hero h1 { 
+  font-size: 2.4rem; 
+  margin-bottom: 15px; 
+  font-family: 'Georgia', serif; 
+  font-weight: bold;
 }
 
-.tour-info h3 {
-    margin-bottom: 10px;
-    color: #333;
+.hero p { 
+  font-size: 1.2rem; 
+  margin-bottom: 30px; 
+  opacity: 0.95; 
 }
 
-.tour-info p {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
+.btn-main { 
+  display: inline-block; 
+  background: #e67e22; 
+  color: #fff; 
+  padding: 12px 30px; 
+  border-radius: 25px; 
+  text-decoration: none; 
+  font-weight: bold; 
+  transition: 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
 }
 
-.about {
-    background: #fff;
-    padding: 60px 20px;
+.btn-main:hover {
+  background: #d35400;
+  transform: translateY(-2px);
 }
 
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 40px;
-}
-
-.about-text {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-text h2 {
-    font-size: 28px;
-    color: #0056b3;
-    margin-bottom: 20px;
-}
-
-.about-text p {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #555;
-}
-
-.about-image {
-    flex: 1;
-    min-width: 300px;
-}
-
-.about-image img {
-    width: 100%;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-
-footer {
-    background: #111;
-    color: #fff;
-    text-align: center;
-    padding: 60px 20px 20px;
-}
-
-footer h2 {
-    font-size: 26px;
-    margin-bottom: 15px;
-}
-
-footer p {
-    color: #ccc;
-    margin-bottom: 30px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.whatsapp-btn {
-    display: inline-flex;
-    align-items: center;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    padding: 15px 35px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 30px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: 0.3s;
-    margin-bottom: 40px;
-}
-
-.whatsapp-btn:hover {
-    background: #128C7E;
-    transform: translateY(-2px);
-}
-
-.credits {
-    font-size: 12px;
-    color: #666;
-    border-top: 1px solid #222;
-    padding-top: 20px;
-}
+/* =================
