@@ -1,10 +1,11 @@
+# File 1: index.html
 html_content = '''<!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amalfi Coast Tours - Scopri la Costiera Amalfitana</title>
-    <meta name="description" content="Tour esclusivi nella Costiera Amalfitana. Escursioni a Positano, Amalfi, Ravello e molto altro.">
+    <title>Campania Tours - Discover the Real Campania</title>
+    <meta name="description" content="Exclusive tours in Campania: breathtaking trails, Pompeii & Vesuvius, food tours, pizza experience, and wine tasting.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,331 +17,295 @@ html_content = '''<!DOCTYPE html>
 </head>
 <body>
 
-    <!-- ==========================================================================
-       PRELOADER
-       ========================================================================== -->
-    <div class="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 10000; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease;">
-        <div style="text-align: center;">
-            <div style="width: 50px; height: 50px; border: 3px solid #e67e22; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 15px;"></div>
-            <p style="font-family: 'Playfair Display', serif; color: #2c3e50; font-size: 1.2rem;">Caricamento...</p>
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-spinner"></div>
+            <p class="preloader-text">Campania Tours</p>
         </div>
     </div>
-    <style>
-        @keyframes spin { to { transform: rotate(360deg); } }
-    </style>
 
-    <!-- ==========================================================================
-       NAVBAR
-       ========================================================================== -->
+    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo">
-                <span>🌊</span>
-                <span>Amalfi Tours</span>
+            <a href="#home" class="logo">
+                <span class="logo-icon">🌋</span>
+                <span class="logo-text">Campania Tours</span>
             </a>
             
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#destinazioni">Destinazioni</a></li>
-                <li><a href="#testimonianze">Testimonianze</a></li>
-                <li><a href="#contatti">Contatti</a></li>
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#tours" data-i18n="nav.tours">Tours</a></li>
+                <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
+                <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
                 <li>
                     <div class="lang-selector">
-                        <button class="lang-btn active" data-lang="it">IT</button>
-                        <button class="lang-btn" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="fr">FR</button>
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="it">IT</button>
+                        <button class="lang-btn" data-lang="es">ES</button>
                     </div>
                 </li>
             </ul>
             
-            <button class="mobile-menu-btn" aria-label="Apri menu" aria-expanded="false">☰</button>
+            <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
         </div>
     </nav>
 
-    <!-- ==========================================================================
-       HERO SECTION
-       ========================================================================== -->
+    <!-- HERO -->
     <section class="hero" id="home">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <span class="hero-badge">Esperienze Uniche</span>
-            <h1>Scopri la Magia della <span>Costiera Amalfitana</span></h1>
-            <p>Escursioni guidate, tour in barca e esperienze indimenticabili tra i paesaggi più belli d'Italia</p>
+            <span class="hero-badge" data-i18n="hero.badge">Authentic Experiences</span>
+            <h1 data-i18n="hero.title">Discover the Real <span>Campania</span></h1>
+            <p data-i18n="hero.subtitle">Breathtaking trails, ancient ruins, authentic flavors, and unforgettable moments in the heart of Southern Italy</p>
             <div class="hero-buttons">
-                <a href="#destinazioni" class="btn btn-primary">Esplora i Tour</a>
-                <a href="#contatti" class="btn btn-outline">Prenota Ora</a>
+                <a href="#tours" class="btn btn-primary" data-i18n="hero.cta1">Explore Tours</a>
+                <a href="#contact" class="btn btn-outline" data-i18n="hero.cta2">Book Now</a>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================================================
-       DESTINAZIONI
-       ========================================================================== -->
-    <section class="destinations" id="destinazioni">
+    <!-- TOURS -->
+    <section class="destinations" id="tours">
         <div class="section-header">
-            <span class="section-tag">Le Nostre Destinazioni</span>
-            <h2>Luoghi da Sogno da Esplorare</h2>
-            <p>Scopri i tesori nascosti della Costiera Amalfitana con i nostri tour esclusivi</p>
+            <span class="section-tag" data-i18n="tours.tag">Our Tours</span>
+            <h2 data-i18n="tours.title">Unforgettable Experiences</h2>
+            <p data-i18n="tours.subtitle">Choose your adventure and let us guide you through the wonders of Campania</p>
         </div>
         
         <div class="dest-grid">
-            <!-- Card 1: Positano -->
+            <!-- Card 1: Breathtaking Trails -->
             <div class="dest-card">
                 <div class="dest-img">
-                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&h=400&fit=crop" alt="Positano - Case colorate sulla scogliera" loading="lazy">
-                    <span class="dest-badge">Più Prenotato</span>
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&h=400&fit=crop" alt="Breathtaking trails in Campania" loading="lazy">
+                    <span class="dest-badge" data-i18n="badges.popular">Most Popular</span>
                 </div>
                 <div class="dest-info">
-                    <h3>Positano</h3>
-                    <p>Perditi tra le viuzze colorate e goditi la vista mozzafiato sul mare turchese.</p>
+                    <h3 data-i18n="tour1.title">Breathtaking Trails</h3>
+                    <p data-i18n="tour1.desc">Walk the Path of the Gods and explore hidden trails with panoramic views of the Amalfi Coast and the Gulf of Naples.</p>
                     <div class="dest-meta">
-                        <span class="dest-price">Da €89</span>
+                        <span class="dest-price" data-i18n="tour1.price">From €75</span>
                         <span class="dest-rating">★★★★★ 4.9</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Card 2: Amalfi -->
+            <!-- Card 2: Pompeii & Vesuvius -->
             <div class="dest-card">
                 <div class="dest-img">
-                    <img src="https://images.unsplash.com/photo-1523531294919-4bcd7c65e216?w=600&h=400&fit=crop" alt="Amalfi - Cattedrale e piazza" loading="lazy">
-                    <span class="dest-badge">Tour Storico</span>
+                    <img src="https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=600&h=400&fit=crop" alt="Pompeii ruins and Mount Vesuvius" loading="lazy">
+                    <span class="dest-badge" data-i18n="badges.history">History</span>
                 </div>
                 <div class="dest-info">
-                    <h3>Amalfi</h3>
-                    <p>Visita la Cattedrale di Sant'Andrea e immergiti nella storia della Repubblica Marinara.</p>
+                    <h3 data-i18n="tour2.title">Pompeii & Vesuvius</h3>
+                    <p data-i18n="tour2.desc">Step back in time exploring the ancient ruins of Pompeii, then conquer the crater of Mount Vesuvius for a stunning view.</p>
                     <div class="dest-meta">
-                        <span class="dest-price">Da €75</span>
+                        <span class="dest-price" data-i18n="tour2.price">From €95</span>
                         <span class="dest-rating">★★★★★ 4.8</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Card 3: Ravello -->
+            <!-- Card 3: Food Tour -->
             <div class="dest-card">
                 <div class="dest-img">
-                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?w=600&h=400&fit=crop" alt="Ravello - Villa Cimbrone" loading="lazy">
-                    <span class="dest-badge">Romantico</span>
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" alt="Traditional Campanian food" loading="lazy">
+                    <span class="dest-badge" data-i18n="badges.gastronomy">Gastronomy</span>
                 </div>
                 <div class="dest-info">
-                    <h3>Ravello</h3>
-                    <p>Concerti all'aperto e giardini mozzafiato a 350 metri sul livello del mare.</p>
+                    <h3 data-i18n="tour3.title">Food Tour</h3>
+                    <p data-i18n="tour3.desc">Taste the real Campania: fresh mozzarella, local cheeses, cured meats, and traditional dishes in authentic local spots.</p>
                     <div class="dest-meta">
-                        <span class="dest-price">Da €95</span>
+                        <span class="dest-price" data-i18n="tour3.price">From €85</span>
                         <span class="dest-rating">★★★★★ 4.9</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Card 4: Capri -->
+            <!-- Card 4: Pizza Experience -->
             <div class="dest-card">
                 <div class="dest-img">
-                    <img src="https://images.unsplash.com/photo-1548676924-48e71ce14b34?w=600&h=400&fit=crop" alt="Capri - Grotta Azzurra" loading="lazy">
-                    <span class="dest-badge">In Barca</span>
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&h=400&fit=crop" alt="Authentic Neapolitan pizza" loading="lazy">
+                    <span class="dest-badge" data-i18n="badges.experience">Experience</span>
                 </div>
                 <div class="dest-info">
-                    <h3>Capri</h3>
-                    <p>Naviga fino all'isola azzurra e ammira la celebre Grotta Azzurra.</p>
+                    <h3 data-i18n="tour4.title">Pizza Experience</h3>
+                    <p data-i18n="tour4.desc">Learn the secrets of real Neapolitan pizza from a master pizzaiolo. Knead, top, and bake your own pizza in a wood-fired oven.</p>
                     <div class="dest-meta">
-                        <span class="dest-price">Da €120</span>
+                        <span class="dest-price" data-i18n="tour4.price">From €70</span>
                         <span class="dest-rating">★★★★★ 4.7</span>
                     </div>
                 </div>
             </div>
             
-            <!-- Card 5: Sentiero degli Dei -->
+            <!-- Card 5: Wine Tasting -->
             <div class="dest-card">
                 <div class="dest-img">
-                    <img src="https://images.unsplash.com/photo-1528127269322-539801943592?w=600&h=400&fit=crop" alt="Sentiero degli Dei - Panorama" loading="lazy">
-                    <span class="dest-badge">Avventura</span>
+                    <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&h=400&fit=crop" alt="Wine tasting in a vineyard" loading="lazy">
+                    <span class="dest-badge" data-i18n="badges.wine">Wine</span>
                 </div>
                 <div class="dest-info">
-                    <h3>Sentiero degli Dei</h3>
-                    <p>Trekking panoramico tra cielo e mare, il sentiero più famoso d'Italia.</p>
+                    <h3 data-i18n="tour5.title">Wine Tasting</h3>
+                    <p data-i18n="tour5.desc">Visit local vineyards on the slopes of Vesuvius. Taste Lacryma Christi and other regional wines paired with local specialties.</p>
                     <div class="dest-meta">
-                        <span class="dest-price">Da €65</span>
+                        <span class="dest-price" data-i18n="tour5.price">From €90</span>
                         <span class="dest-rating">★★★★★ 4.8</span>
                     </div>
                 </div>
             </div>
-            
-            <!-- Card 6: Sorrento -->
-            <div class="dest-card">
-                <div class="dest-img">
-                    <img src="https://images.unsplash.com/photo-1534234828563-02511c968763?w=600&h=400&fit=crop" alt="Sorrento - Centro storico" loading="lazy">
-                    <span class="dest-badge">Gastronomia</span>
-                </div>
-                <div class="dest-info">
-                    <h3>Sorrento</h3>
-                    <p>Degustazione di limoncello e cucina tipica nel cuore della città.</p>
-                    <div class="dest-meta">
-                        <span class="dest-price">Da €80</span>
-                        <span class="dest-rating">★★★★★ 4.6</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
-    <!-- ==========================================================================
-       TESTIMONIANZE
-       ========================================================================== -->
-    <section class="testimonials" id="testimonianze">
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" id="testimonials">
         <div class="section-header">
-            <span class="section-tag">Cosa Dicono di Noi</span>
-            <h2>Testimonianze dei Viaggiatori</h2>
-            <p>Esperienze autentiche raccontate da chi ha vissuto la Costiera con noi</p>
+            <span class="section-tag" data-i18n="testimonials.tag">What They Say</span>
+            <h2 data-i18n="testimonials.title">Traveler Reviews</h2>
+            <p data-i18n="testimonials.subtitle">Authentic experiences shared by those who discovered Campania with us</p>
         </div>
         
         <div class="testi-grid">
             <div class="testi-card">
-                <p class="testi-text">Un'esperienza indimenticabile! La guida era preparatissima e ci ha fatto scoprire angoli nascosti di Positano che non avremmo mai trovato da soli. Consigliatissimo!</p>
+                <p class="testi-text" data-i18n="review1.text">The Path of the Gods hike was absolutely stunning! Our guide was knowledgeable and showed us hidden viewpoints we never would have found alone. A must-do!</p>
                 <div class="testi-author">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Maria Rossi">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face" alt="Sarah Johnson">
                     <div class="testi-author-info">
-                        <h4>Maria Rossi</h4>
-                        <span>Milano, Italia</span>
+                        <h4>Sarah Johnson</h4>
+                        <span data-i18n="review1.from">London, UK</span>
                     </div>
                 </div>
             </div>
             
             <div class="testi-card">
-                <p class="testi-text">Il tour in barca a Capri è stato il momento clou della nostra vacanza. L'equipaggio professionale e la Grotta Azzurra al tramonto... da brividi!</p>
+                <p class="testi-text" data-i18n="review2.text">Pompeii and Vesuvius in one day was intense but incredible. The guide brought the ruins to life with fascinating stories. The view from the crater is unforgettable!</p>
                 <div class="testi-author">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="John Smith">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face" alt="Mark Williams">
                     <div class="testi-author-info">
-                        <h4>John Smith</h4>
-                        <span>Londra, UK</span>
+                        <h4>Mark Williams</h4>
+                        <span data-i18n="review2.from">New York, USA</span>
                     </div>
                 </div>
             </div>
             
             <div class="testi-card">
-                <p class="testi-text">Abbiamo fatto il Sentiero degli Dei con i bambini e la guida è stata fantastica nel adattare il percorso. Panorami da cartolina!</p>
+                <p class="testi-text" data-i18n="review3.text">The pizza making class was the highlight of our trip! We learned so much and ate the best pizza of our lives. Our kids loved every minute of it.</p>
                 <div class="testi-author">
-                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Sophie Martin">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Ana Garcia">
                     <div class="testi-author-info">
-                        <h4>Sophie Martin</h4>
-                        <span>Parigi, Francia</span>
+                        <h4>Ana Garcia</h4>
+                        <span data-i18n="review3.from">Madrid, Spain</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================================================
-       CTA (CALL TO ACTION)
-       ========================================================================== -->
+    <!-- CTA -->
     <section class="cta">
         <div class="cta-content">
-            <h2>Pronto per la Tua Avventura?</h2>
-            <p>Prenota ora il tuo tour e ricevi uno sconto del 10% sul tuo primo viaggio nella Costiera Amalfitana</p>
-            <a href="#contatti" class="btn btn-primary">Prenota il Tuo Tour</a>
+            <h2 data-i18n="cta.title">Ready for Your Adventure?</h2>
+            <p data-i18n="cta.subtitle">Book now and get 10% off your first Campania tour experience</p>
+            <a href="#contact" class="btn btn-primary" data-i18n="cta.button">Book Your Tour</a>
         </div>
     </section>
 
-    <!-- ==========================================================================
-       CONTATTI
-       ========================================================================== -->
-    <section class="contact" id="contatti">
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
         <div class="section-header">
-            <span class="section-tag">Contattaci</span>
-            <h2>Prenota il Tuo Tour</h2>
-            <p>Compila il modulo e ti risponderemo entro 24 ore con un preventivo personalizzato</p>
+            <span class="section-tag" data-i18n="contact.tag">Contact Us</span>
+            <h2 data-i18n="contact.title">Book Your Tour</h2>
+            <p data-i18n="contact.subtitle">Fill out the form and we will reply within 24 hours with a personalized quote</p>
         </div>
         
         <div class="contact-grid">
             <div class="contact-info">
-                <h3>Informazioni di Contatto</h3>
-                <p>Siamo a tua disposizione per organizzare il tour perfetto. Puoi contattarci via telefono, email o compilando il modulo.</p>
+                <h3 data-i18n="contact.infoTitle">Contact Information</h3>
+                <p data-i18n="contact.infoText">We are here to organize your perfect tour. Contact us by phone, email, or by filling out the form.</p>
                 
                 <div class="contact-detail">
-                    <div style="width: 40px; height: 40px; background: #e67e22; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;">📍</div>
+                    <div class="contact-icon">📍</div>
                     <div>
-                        <strong>Indirizzo</strong>
-                        <p style="color: #7f8c8d; margin: 0;">Via Roma 42, 84011 Amalfi (SA)</p>
+                        <strong data-i18n="contact.addressLabel">Address</strong>
+                        <p>Via Roma 42, 80100 Naples (NA)</p>
                     </div>
                 </div>
                 
                 <div class="contact-detail">
-                    <div style="width: 40px; height: 40px; background: #e67e22; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;">📞</div>
+                    <div class="contact-icon">📞</div>
                     <div>
-                        <strong>Telefono</strong>
-                        <p style="color: #7f8c8d; margin: 0;">+39 089 123 4567</p>
+                        <strong data-i18n="contact.phoneLabel">Phone</strong>
+                        <p>+39 081 123 4567</p>
                     </div>
                 </div>
                 
                 <div class="contact-detail">
-                    <div style="width: 40px; height: 40px; background: #e67e22; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;">✉️</div>
+                    <div class="contact-icon">✉️</div>
                     <div>
-                        <strong>Email</strong>
-                        <p style="color: #7f8c8d; margin: 0;">info@amalfitours.it</p>
+                        <strong data-i18n="contact.emailLabel">Email</strong>
+                        <p>info@campaniatours.it</p>
                     </div>
                 </div>
                 
                 <div class="contact-detail">
-                    <div style="width: 40px; height: 40px; background: #e67e22; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0;">🕐</div>
+                    <div class="contact-icon">🕐</div>
                     <div>
-                        <strong>Orari</strong>
-                        <p style="color: #7f8c8d; margin: 0;">Lun-Sab: 9:00 - 19:00</p>
+                        <strong data-i18n="contact.hoursLabel">Hours</strong>
+                        <p data-i18n="contact.hoursValue">Mon-Sat: 9:00 AM - 7:00 PM</p>
                     </div>
                 </div>
             </div>
             
             <form class="contact-form" action="#" method="POST">
                 <div class="form-group">
-                    <label for="name">Nome e Cognome *</label>
-                    <input type="text" id="name" name="name" placeholder="Mario Rossi" required>
+                    <label for="name" data-i18n="form.name">Full Name *</label>
+                    <input type="text" id="name" name="name" placeholder="John Smith" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" placeholder="mario@email.it" required>
+                    <label for="email" data-i18n="form.email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="john@email.com" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Telefono</label>
-                    <input type="tel" id="phone" name="phone" placeholder="+39 333 123 4567">
+                    <label for="phone" data-i18n="form.phone">Phone</label>
+                    <input type="tel" id="phone" name="phone" placeholder="+1 555 123 4567">
                 </div>
                 
                 <div class="form-group">
-                    <label for="tour">Tour di Interesse</label>
+                    <label for="tour" data-i18n="form.tour">Tour of Interest</label>
                     <select id="tour" name="tour">
-                        <option value="">Seleziona un tour...</option>
-                        <option value="positano">Positano</option>
-                        <option value="amalfi">Amalfi</option>
-                        <option value="ravello">Ravello</option>
-                        <option value="capri">Capri in Barca</option>
-                        <option value="sentiero">Sentiero degli Dei</option>
-                        <option value="sorrento">Sorrento</option>
-                        <option value="custom">Tour Personalizzato</option>
+                        <option value="" data-i18n="form.selectTour">Select a tour...</option>
+                        <option value="trails" data-i18n="tour1.title">Breathtaking Trails</option>
+                        <option value="pompeii" data-i18n="tour2.title">Pompeii & Vesuvius</option>
+                        <option value="food" data-i18n="tour3.title">Food Tour</option>
+                        <option value="pizza" data-i18n="tour4.title">Pizza Experience</option>
+                        <option value="wine" data-i18n="tour5.title">Wine Tasting</option>
+                        <option value="custom" data-i18n="form.customTour">Custom Tour</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="date">Data Preferita</label>
+                    <label for="date" data-i18n="form.date">Preferred Date</label>
                     <input type="date" id="date" name="date">
                 </div>
                 
                 <div class="form-group">
-                    <label for="message">Messaggio *</label>
-                    <textarea id="message" name="message" placeholder="Descrivi le tue esigenze, numero di partecipanti, preferenze..." required></textarea>
+                    <label for="message" data-i18n="form.message">Message *</label>
+                    <textarea id="message" name="message" placeholder="Describe your needs, number of participants, preferences..." required></textarea>
                 </div>
                 
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Invia Richiesta</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;" data-i18n="form.submit">Send Request</button>
             </form>
         </div>
     </section>
 
-    <!-- ==========================================================================
-       FOOTER
-       ========================================================================== -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>Amalfi Tours</h4>
-                <p>Esperienze autentiche nella Costiera Amalfitana dal 2010. Guidati da professionisti del territorio.</p>
+                <h4>Campania Tours</h4>
+                <p data-i18n="footer.about">Authentic Campania experiences since 2010. Guided by local professionals who love their land.</p>
                 <div class="footer-social">
                     <a href="#" aria-label="Facebook">f</a>
                     <a href="#" aria-label="Instagram">📷</a>
@@ -350,35 +315,35 @@ html_content = '''<!DOCTYPE html>
             </div>
             
             <div class="footer-col">
-                <h4>Tour Popolari</h4>
-                <a href="#">Positano & Praiano</a><br>
-                <a href="#">Amalfi & Atrani</a><br>
-                <a href="#">Ravello & Villa Cimbrone</a><br>
-                <a href="#">Capri in Giornata</a><br>
-                <a href="#">Sentiero degli Dei</a>
+                <h4 data-i18n="footer.popular">Popular Tours</h4>
+                <a href="#" data-i18n="tour1.title">Breathtaking Trails</a><br>
+                <a href="#" data-i18n="tour2.title">Pompeii & Vesuvius</a><br>
+                <a href="#" data-i18n="tour3.title">Food Tour</a><br>
+                <a href="#" data-i18n="tour4.title">Pizza Experience</a><br>
+                <a href="#" data-i18n="tour5.title">Wine Tasting</a>
             </div>
             
             <div class="footer-col">
-                <h4>Link Utili</h4>
-                <a href="#">Chi Siamo</a><br>
-                <a href="#">Come Prenotare</a><br>
-                <a href="#">Termini e Condizioni</a><br>
-                <a href="#">Privacy Policy</a><br>
-                <a href="#">FAQ</a>
+                <h4 data-i18n="footer.useful">Useful Links</h4>
+                <a href="#" data-i18n="footer.aboutUs">About Us</a><br>
+                <a href="#" data-i18n="footer.howToBook">How to Book</a><br>
+                <a href="#" data-i18n="footer.terms">Terms & Conditions</a><br>
+                <a href="#" data-i18n="footer.privacy">Privacy Policy</a><br>
+                <a href="#" data-i18n="footer.faq">FAQ</a>
             </div>
             
             <div class="footer-col">
-                <h4>Newsletter</h4>
-                <p>Iscriviti per ricevere offerte esclusive e novità sui nostri tour.</p>
-                <form style="margin-top: 15px; display: flex; gap: 10px;">
-                    <input type="email" placeholder="La tua email" style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: white;">
-                    <button type="submit" style="padding: 10px 20px; background: #e67e22; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: 600;">Iscriviti</button>
+                <h4 data-i18n="footer.newsletter">Newsletter</h4>
+                <p data-i18n="footer.newsletterText">Subscribe to receive exclusive offers and news about our tours.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="your@email.com" data-i18n-placeholder="footer.emailPlaceholder">
+                    <button type="submit" data-i18n="footer.subscribe">Subscribe</button>
                 </form>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>© 2026 Amalfi Tours. Tutti i diritti riservati. | P.IVA 12345678901</p>
+            <p>© 2026 Campania Tours. <span data-i18n="footer.rights">All rights reserved.</span> | P.IVA 12345678901</p>
         </div>
     </footer>
 
@@ -391,5 +356,5 @@ html_content = '''<!DOCTYPE html>
 with open('/mnt/agents/output/index.html', 'w', encoding='utf-8') as f:
     f.write(html_content)
 
-print("HTML salvato con successo!")
-print(f"Lunghezza file: {len(html_content)} caratteri")
+print("✅ index.html creato!")
+print(f"Lunghezza: {len(html_content)} caratteri")
