@@ -1,5 +1,4 @@
-# File 1: index.html
-html_content = '''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,38 +6,22 @@ html_content = '''<!DOCTYPE html>
     <title>Campania Tours - Discover the Real Campania</title>
     <meta name="description" content="Exclusive tours in Campania: breathtaking trails, Pompeii & Vesuvius, food tours, pizza experience, and wine tasting.">
     
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-   <!-- PRELOADER -->
-<div class="preloader" id="preloader">
-    <div class="preloader-inner">
-        <div class="preloader-spinner"></div>
-        <p class="preloader-text">Campania Tours</p>
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-spinner"></div>
+            <p class="preloader-text">Campania Tours</p>
+        </div>
     </div>
-</div>
-<script>
-    // Nasconde il preloader immediatamente quando il DOM è pronto
-    document.addEventListener('DOMContentLoaded', function() {
-        var preloader = document.getElementById('preloader');
-        if (preloader) {
-            setTimeout(function() {
-                preloader.classList.add('hidden');
-                setTimeout(function() {
-                    preloader.style.display = 'none';
-                }, 500);
-            }, 800);
-        }
-    });
-</script>
- 
+
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
@@ -47,21 +30,21 @@ html_content = '''<!DOCTYPE html>
                 <span class="logo-text">Campania Tours</span>
             </a>
             
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#home" data-i18n="nav.home">Home</a></li>
                 <li><a href="#tours" data-i18n="nav.tours">Tours</a></li>
                 <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
                 <li>
                     <div class="lang-selector">
-                        <button class="lang-btn active" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="it">IT</button>
-                        <button class="lang-btn" data-lang="es">ES</button>
+                        <button class="lang-btn active" data-lang="en" onclick="changeLang('en')">EN</button>
+                        <button class="lang-btn" data-lang="it" onclick="changeLang('it')">IT</button>
+                        <button class="lang-btn" data-lang="es" onclick="changeLang('es')">ES</button>
                     </div>
                 </li>
             </ul>
             
-            <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <button class="mobile-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
         </div>
     </nav>
 
@@ -89,7 +72,6 @@ html_content = '''<!DOCTYPE html>
         </div>
         
         <div class="dest-grid">
-            <!-- Card 1: Breathtaking Trails -->
             <div class="dest-card">
                 <div class="dest-img">
                     <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=600&h=400&fit=crop" alt="Breathtaking trails in Campania" loading="lazy">
@@ -105,7 +87,6 @@ html_content = '''<!DOCTYPE html>
                 </div>
             </div>
             
-            <!-- Card 2: Pompeii & Vesuvius -->
             <div class="dest-card">
                 <div class="dest-img">
                     <img src="https://images.unsplash.com/photo-1569949381669-ecf31ae8e613?w=600&h=400&fit=crop" alt="Pompeii ruins and Mount Vesuvius" loading="lazy">
@@ -121,7 +102,6 @@ html_content = '''<!DOCTYPE html>
                 </div>
             </div>
             
-            <!-- Card 3: Food Tour -->
             <div class="dest-card">
                 <div class="dest-img">
                     <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&h=400&fit=crop" alt="Traditional Campanian food" loading="lazy">
@@ -137,7 +117,6 @@ html_content = '''<!DOCTYPE html>
                 </div>
             </div>
             
-            <!-- Card 4: Pizza Experience -->
             <div class="dest-card">
                 <div class="dest-img">
                     <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=600&h=400&fit=crop" alt="Authentic Neapolitan pizza" loading="lazy">
@@ -153,7 +132,6 @@ html_content = '''<!DOCTYPE html>
                 </div>
             </div>
             
-            <!-- Card 5: Wine Tasting -->
             <div class="dest-card">
                 <div class="dest-img">
                     <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&h=400&fit=crop" alt="Wine tasting in a vineyard" loading="lazy">
@@ -270,7 +248,7 @@ html_content = '''<!DOCTYPE html>
                 </div>
             </div>
             
-            <form class="contact-form" action="#" method="POST">
+            <form class="contact-form" onsubmit="handleSubmit(event)">
                 <div class="form-group">
                     <label for="name" data-i18n="form.name">Full Name *</label>
                     <input type="text" id="name" name="name" placeholder="John Smith" required>
@@ -349,7 +327,7 @@ html_content = '''<!DOCTYPE html>
             <div class="footer-col">
                 <h4 data-i18n="footer.newsletter">Newsletter</h4>
                 <p data-i18n="footer.newsletterText">Subscribe to receive exclusive offers and news about our tours.</p>
-                <form class="newsletter-form">
+                <form class="newsletter-form" onsubmit="handleNewsletter(event)">
                     <input type="email" placeholder="your@email.com" data-i18n-placeholder="footer.emailPlaceholder">
                     <button type="submit" data-i18n="footer.subscribe">Subscribe</button>
                 </form>
@@ -361,14 +339,11 @@ html_content = '''<!DOCTYPE html>
         </div>
     </footer>
 
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
     <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
-</html>'''
-
-with open('/mnt/agents/output/index.html', 'w', encoding='utf-8') as f:
-    f.write(html_content)
-
-print("✅ index.html creato!")
-print(f"Lunghezza: {len(html_content)} caratteri")
+</html>
