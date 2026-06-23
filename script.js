@@ -1,8 +1,9 @@
-/* ==========================================================================
+
+# File 3: script.js - SEMPLIFICATO AL MASSIMO, niente event listener inline
+js_content = '''/* ==========================================================================
    CAMPANIA TOURS - SCRIPT.JS
    ========================================================================== */
 
-// TRANSLATIONS
 var translations = {
     en: {
         'nav.home': 'Home',
@@ -247,10 +248,14 @@ function changeLang(lang) {
     localStorage.setItem('campania-lang', lang);
     document.documentElement.lang = lang;
 
-    // Update active button
+    // Update active buttons (both in hero and navbar)
     var buttons = document.querySelectorAll('.lang-btn');
     for (var i = 0; i < buttons.length; i++) {
-        buttons[i].classList.toggle('active', buttons[i].dataset.lang === lang);
+        if (buttons[i].dataset.lang === lang) {
+            buttons[i].classList.add('active');
+        } else {
+            buttons[i].classList.remove('active');
+        }
     }
 
     // Update all text elements
@@ -272,7 +277,6 @@ function changeLang(lang) {
     }
 }
 
-// Load saved language or default to English
 function loadLanguage() {
     var saved = localStorage.getItem('campania-lang');
     if (saved && translations[saved]) {
@@ -282,10 +286,11 @@ function loadLanguage() {
     }
 }
 
-// MOBILE MENU
 function toggleMenu() {
     var nav = document.getElementById('navLinks');
     var btn = document.getElementById('menuBtn');
+    if (!nav || !btn) return;
+    
     var isOpen = nav.classList.contains('active');
     
     if (isOpen) {
@@ -299,147 +304,10 @@ function toggleMenu() {
     }
 }
 
-// Close menu when clicking a link
-document.addEventListener('DOMContentLoaded', function() {
-    var links = document.querySelectorAll('.nav-links a');
-    for (var i = 0; i < links.length; i++) {
-        links[i].addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
-                var nav = document.getElementById('navLinks');
-                var btn = document.getElementById('menuBtn');
-                nav.classList.remove('active');
-                btn.innerHTML = '☰';
-                btn.setAttribute('aria-expanded', 'false');
-            }
-        });
-    }
-});
-
-// PRELOADER
-document.addEventListener('DOMContentLoaded', function() {
-    var preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(function() {
-            preloader.classList.add('hidden');
-            setTimeout(function() {
-                preloader.style.display = 'none';
-            }, 500);
-        }, 800);
-    }
-});
-
-// NAVBAR SCROLL
-window.addEventListener('scroll', function() {
-    var navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.padding = '10px 0';
-        navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
-    } else {
-        navbar.style.padding = '15px 0';
-        navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-    }
-});
-
-// SMOOTH SCROLL
-document.addEventListener('DOMContentLoaded', function() {
-    var anchors = document.querySelectorAll('a[href^="#"]');
-    for (var i = 0; i < anchors.length; i++) {
-        anchors[i].addEventListener('click', function(e) {
-            e.preventDefault();
-            var target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    }
-});
-
-// SCROLL ANIMATIONS
-document.addEventListener('DOMContentLoaded', function() {
-    var observer = new IntersectionObserver(function(entries) {
-        for (var i = 0; i < entries.length; i++) {
-            if (entries[i].isIntersecting) {
-                entries[i].target.classList.add('animated');
-                observer.unobserve(entries[i].target);
-            }
-        }
-    }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    });
-
-    var elements = document.querySelectorAll('.dest-card, .testi-card, .section-header');
-    for (var i = 0; i < elements.length; i++) {
-        elements[i].classList.add('animate-on-scroll');
-        observer.observe(elements[i]);
-    }
-});
-
-// BACK TO TOP
-window.addEventListener('scroll', function() {
-    var btn = document.getElementById('backToTop');
-    if (window.scrollY > 500) {
-        btn.classList.add('visible');
-    } else {
-        btn.classList.remove('visible');
-    }
-});
-
 function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// FORM HANDLING
-function handleSubmit(e) {
-    e.preventDefault();
-    var name = document.getElementById('name').value;
-    var email = document.getElementById('email').value;
-    var message = document.getElementById('message').value;
-
-    var messages = {
-        en: { success: 'Message sent successfully! We will reply soon.', error: 'Please fill in all required fields.' },
-        it: { success: 'Messaggio inviato con successo! Ti risponderemo presto.', error: 'Per favore compila tutti i campi obbligatori.' },
-        es: { success: '¡Mensaje enviado con éxito! Te responderemos pronto.', error: 'Por favor completa todos los campos obligatorios.' }
-    };
-
-    var msg = messages[currentLang] || messages.en;
-
-    if (!name || !email || !message) {
-        showNotification(msg.error, 'error');
-        return;
-    }
-
-    showNotification(msg.success, 'success');
-    e.target.reset();
-}
-
-function handleNewsletter(e) {
-    e.preventDefault();
-    var email = e.target.querySelector('input[type="email"]').value;
-    
-    var messages = {
-        en: 'Subscribed successfully!',
-        it: 'Iscrizione completata!',
-        es: '¡Suscripción completada!'
-    };
-
-    if (email && email.indexOf('@') > -1) {
-        showNotification(messages[currentLang] || messages.en, 'success');
-        e.target.reset();
-    } else {
-        var errors = {
-            en: 'Please enter a valid email.',
-            it: 'Per favore inserisci un email valida.',
-            es: 'Por favor introduce un email válido.'
-        };
-        showNotification(errors[currentLang] || errors.en, 'error');
-    }
-}
-
-// NOTIFICATIONS
 function showNotification(message, type) {
     var existing = document.querySelector('.notification');
     if (existing) existing.remove();
@@ -460,7 +328,179 @@ function showNotification(message, type) {
     }, 5000);
 }
 
-// Initialize
+function handleSubmit(e) {
+    e.preventDefault();
+    var name = document.getElementById('name').value;
+    var email = document.getElementById('email').value;
+    var message = document.getElementById('message').value;
+
+    var messages = {
+        en: { success: 'Message sent successfully! We will reply soon.', error: 'Please fill in all required fields.' },
+        it: { success: 'Messaggio inviato con successo! Ti risponderemo presto.', error: 'Per favore compila tutti i campi obbligatori.' },
+        es: { success: 'Mensaje enviado con exito! Te responderemos pronto.', error: 'Por favor completa todos los campos obligatorios.' }
+    };
+
+    var msg = messages[currentLang] || messages.en;
+
+    if (!name || !email || !message) {
+        showNotification(msg.error, 'error');
+        return;
+    }
+
+    showNotification(msg.success, 'success');
+    e.target.reset();
+}
+
+function handleNewsletter(e) {
+    e.preventDefault();
+    var email = e.target.querySelector('input[type="email"]').value;
+    
+    var messages = {
+        en: 'Subscribed successfully!',
+        it: 'Iscrizione completata!',
+        es: 'Suscripcion completada!'
+    };
+
+    if (email && email.indexOf('@') > -1 && email.indexOf('.') > -1) {
+        showNotification(messages[currentLang] || messages.en, 'success');
+        e.target.reset();
+    } else {
+        var errors = {
+            en: 'Please enter a valid email.',
+            it: 'Per favore inserisci un email valida.',
+            es: 'Por favor introduce un email valido.'
+        };
+        showNotification(errors[currentLang] || errors.en, 'error');
+    }
+}
+
+// DOM READY - everything attaches here
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Load language
     loadLanguage();
-});
+
+    // Attach language buttons
+    var langButtons = document.querySelectorAll('.lang-btn');
+    for (var i = 0; i < langButtons.length; i++) {
+        langButtons[i].addEventListener('click', function() {
+            changeLang(this.dataset.lang);
+        });
+    }
+
+    // Mobile menu button
+    var menuBtn = document.getElementById('menuBtn');
+    if (menuBtn) {
+        menuBtn.addEventListener('click', toggleMenu);
+    }
+
+    // Close menu on link click
+    var navLinks = document.querySelectorAll('.nav-links a');
+    for (var i = 0; i < navLinks.length; i++) {
+        navLinks[i].addEventListener('click', function() {
+            if (window.innerWidth <= 768) {
+                var nav = document.getElementById('navLinks');
+                var btn = document.getElementById('menuBtn');
+                if (nav) nav.classList.remove('active');
+                if (btn) {
+                    btn.innerHTML = '☰';
+                    btn.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        var nav = document.getElementById('navLinks');
+        var btn = document.getElementById('menuBtn');
+        if (!nav || !btn) return;
+        if (!e.target.closest('.navbar') && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            btn.innerHTML = '☰';
+            btn.setAttribute('aria-expanded', 'false');
+        }
+    });
+
+    // Navbar scroll effect
+    var navbar = document.querySelector('.navbar');
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.style.padding = '10px 0';
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.padding = '15px 0';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    }
+
+    // Smooth scroll for anchor links
+    var anchors = document.querySelectorAll('a[href^="#"]');
+    for (var i = 0; i < anchors.length; i++) {
+        anchors[i].addEventListener('click', function(e) {
+            e.preventDefault();
+            var href = this.getAttribute('href');
+            if (href === '#') return;
+            var target = document.querySelector(href);
+            if (target) {
+                window.scrollTo({
+                    top: target.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+
+    // Back to top button
+    var backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+        backToTop.addEventListener('click', scrollToTop);
+    }
+
+    // Contact form
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', handleSubmit);
+    }
+
+    // Newsletter form
+    var newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', handleNewsletter);
+    }
+
+    // Scroll animations
+    var observer = new IntersectionObserver(function(entries) {
+        for (var i = 0; i < entries.length; i++) {
+            if (entries[i].isIntersecting) {
+                entries[i].target.classList.add('animated');
+                observer.unobserve(entries[i].target);
+            }
+        }
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    var animElements = document.querySelectorAll('.dest-card, .testi-card, .section-header');
+    for (var i = 0; i < animElements.length; i++) {
+        animElements[i].classList.add('animate-on-scroll');
+        observer.observe(animElements[i]);
+    }
+
+});'''
+
+with open('/mnt/agents/output/script.js', 'w', encoding='utf-8') as f:
+    f.write(js_content)
+
+print("✅ script.js creato (semplificato, event listener interni, niente inline)")
+print(f"Lunghezza: {len(js_content)} caratteri")
