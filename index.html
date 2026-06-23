@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+
+# File 1: index.html - SENZA PRELOADER, con selettore lingua visibile in homepage
+html_content = '''<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,14 +16,6 @@
 </head>
 <body>
 
-    <!-- PRELOADER -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-spinner"></div>
-            <p class="preloader-text">Campania Tours</p>
-        </div>
-    </div>
-
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
@@ -35,16 +29,9 @@
                 <li><a href="#tours" data-i18n="nav.tours">Tours</a></li>
                 <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
                 <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-                <li>
-                    <div class="lang-selector">
-                        <button class="lang-btn active" data-lang="en" onclick="changeLang('en')">EN</button>
-                        <button class="lang-btn" data-lang="it" onclick="changeLang('it')">IT</button>
-                        <button class="lang-btn" data-lang="es" onclick="changeLang('es')">ES</button>
-                    </div>
-                </li>
             </ul>
             
-            <button class="mobile-menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+            <button class="mobile-menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
         </div>
     </nav>
 
@@ -53,6 +40,14 @@
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
+            
+            <!-- LANGUAGE SELECTOR IN HOMEPAGE -->
+            <div class="hero-lang-selector">
+                <button class="lang-btn active" data-lang="en" id="btn-en">EN</button>
+                <button class="lang-btn" data-lang="it" id="btn-it">IT</button>
+                <button class="lang-btn" data-lang="es" id="btn-es">ES</button>
+            </div>
+            
             <span class="hero-badge" data-i18n="hero.badge">Authentic Experiences</span>
             <h1 data-i18n="hero.title">Discover the Real <span>Campania</span></h1>
             <p data-i18n="hero.subtitle">Breathtaking trails, ancient ruins, authentic flavors, and unforgettable moments in the heart of Southern Italy</p>
@@ -248,7 +243,7 @@
                 </div>
             </div>
             
-            <form class="contact-form" onsubmit="handleSubmit(event)">
+            <form class="contact-form" id="contactForm">
                 <div class="form-group">
                     <label for="name" data-i18n="form.name">Full Name *</label>
                     <input type="text" id="name" name="name" placeholder="John Smith" required>
@@ -327,7 +322,7 @@
             <div class="footer-col">
                 <h4 data-i18n="footer.newsletter">Newsletter</h4>
                 <p data-i18n="footer.newsletterText">Subscribe to receive exclusive offers and news about our tours.</p>
-                <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <form class="newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="your@email.com" data-i18n-placeholder="footer.emailPlaceholder">
                     <button type="submit" data-i18n="footer.subscribe">Subscribe</button>
                 </form>
@@ -340,10 +335,16 @@
     </footer>
 
     <!-- BACK TO TOP -->
-    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+    <button class="back-to-top" id="backToTop">↑</button>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
 
 </body>
-</html>
+</html>'''
+
+with open('/mnt/agents/output/index.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("✅ index.html creato (senza preloader, con selettore lingua in homepage)")
+print(f"Lunghezza: {len(html_content)} caratteri")
