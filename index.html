@@ -17,14 +17,28 @@ html_content = '''<!DOCTYPE html>
 </head>
 <body>
 
-    <!-- PRELOADER -->
-    <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-spinner"></div>
-            <p class="preloader-text">Campania Tours</p>
-        </div>
+   <!-- PRELOADER -->
+<div class="preloader" id="preloader">
+    <div class="preloader-inner">
+        <div class="preloader-spinner"></div>
+        <p class="preloader-text">Campania Tours</p>
     </div>
-
+</div>
+<script>
+    // Nasconde il preloader immediatamente quando il DOM è pronto
+    document.addEventListener('DOMContentLoaded', function() {
+        var preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(function() {
+                preloader.classList.add('hidden');
+                setTimeout(function() {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 800);
+        }
+    });
+</script>
+ 
     <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
