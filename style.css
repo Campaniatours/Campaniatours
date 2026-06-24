@@ -335,6 +335,20 @@ img {
     outline: none;
 }
 
+.btn-yellow {
+    border: 2px solid #f39c12;
+    color: #f39c12;
+    background: transparent;
+}
+
+.btn-yellow:hover,
+.btn-yellow:focus {
+    background: #f39c12;
+    color: var(--dark);
+    transform: translateY(-2px);
+    outline: none;
+}
+
 /* SECTIONS */
 .section-header {
     text-align: center;
